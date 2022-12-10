@@ -6,83 +6,16 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 18:10:37 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/09 18:57:01 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:05:45 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "test.hpp"
 
 #include <iostream>
 #include <iomanip>
 #include <vector>
 #include <stdexcept>
-#include "../Containers/vector.hpp"
-
-#ifndef	MYCOLORS_HPP
-# define MYCOLORS_HPP
-
-# define COLOR_YELLOW_B "\033[1;33m"
-# define COLOR_PURPLE_B "\033[1;35m"
-# define COLOR_BLUE_B "\033[1;34m"
-# define COLOR_GREEN_B "\033[1;32m"
-# define COLOR_GREEN "\033[0;32m"
-# define COLOR_RED_B "\033[1;31m"
-# define COLOR_END "\033[0m"
-
-#endif
-
-static void	example1()
-{
-	/* Example 1 */
-	/* Example for constructor without parametrs */
-	/* Example for size and capacity with int */
-	/* Example for push_back */
-
-	std::vector<int>	vec;
-	std::cout << COLOR_PURPLE_B << "Example 1" << COLOR_END << std::endl;
-	std::cout << COLOR_YELLOW_B;
-	std::cout << "std::vector -> capacity: " << vec.capacity();
-	std::cout << ", size: " << vec.size();
-	vec.push_back(42);
-	std::cout << ", push_back[42] value[0]: " << vec[0];
-	std::cout << ", capacity: " << vec.capacity();
-	std::cout << ", size: " << vec.size();
-	vec.push_back(84);
-	std::cout << ", push_back[84] value[1]: " << vec[1];
-	std::cout << ", capacity: " << vec.capacity();
-	std::cout << ", size: " << vec.size();
-	vec.push_back(168);
-	std::cout << ", push_back[168] value[2]: " << vec.at(2);
-	std::cout << ", capacity: " << vec.capacity();
-	std::cout << ", size: " << vec.size();
-	vec.push_back(336);
-	vec.push_back(672);
-	std::cout << ", push_back[336],[672] value[3]: " << vec.at(3);
-	std::cout << ", capacity: " << vec.capacity();
-	std::cout << ", size: " << vec.size() << '.';
-	std::cout << COLOR_END << std::endl;
-
-	ft::vector<int>		ft_vec;
-	std::cout << COLOR_GREEN_B;
-	std::cout << "ft::vector  -> capacity: " << ft_vec.capacity();
-	std::cout << ", size: " << ft_vec.size();
-	ft_vec.push_back(42);
-	std::cout << ", push_back[42] value[0]: " << ft_vec[0];
-	std::cout << ", capacity: " << ft_vec.capacity();
-	std::cout << ", size: " << ft_vec.size();
-	ft_vec.push_back(84);
-	std::cout << ", push_back[84] value[1]: " << ft_vec[1];
-	std::cout << ", capacity: " << ft_vec.capacity();
-	std::cout << ", size: " << ft_vec.size();
-	ft_vec.push_back(168);
-	std::cout << ", push_back[168] value[2]: " << ft_vec.at(2);
-	std::cout << ", capacity: " << ft_vec.capacity();
-	std::cout << ", size: " << ft_vec.size();
-	ft_vec.push_back(336);
-	ft_vec.push_back(672);
-	std::cout << ", push_back[336],[672] value[3]: " << ft_vec.at(3);
-	std::cout << ", capacity: " << ft_vec.capacity();
-	std::cout << ", size: " << ft_vec.size() << '.' << std::endl;
-	std::cout << COLOR_END << std::endl;
-}
 
 static void	example2()
 {
@@ -1603,8 +1536,14 @@ static void	example27()
 
 void	vector_test()
 {
-	example1();
-	example2();
+	std::cout << COLOR_PURPLE_B << "Example 1" << COLOR_END << std::endl;
+	std::cout << COLOR_YELLOW_B;
+	std_test::example1();
+	std::cout << COLOR_GREEN_B;
+	ft_test::example1();
+	std::cout << COLOR_END << std::endl;
+
+/*	example2();
 	example3();
 	example4();
 	example5();
@@ -1629,5 +1568,5 @@ void	vector_test()
 	example24();
 	example25();
 	example26();
-	example27();
+	example27();*/
 }
