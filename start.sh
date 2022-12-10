@@ -4,4 +4,4 @@
 
 make Vdef=$vector
 
-#./test
+./crash_test

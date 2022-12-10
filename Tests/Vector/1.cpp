@@ -6,9 +6,14 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 13:40:01 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/10 16:48:04 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:24:57 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/* Example 1 */
+/* Example for constructor without parametrs */
+/* Example for size and capacity with int */
+/* Example for push_back */
 
 #include "test.hpp"
 
@@ -16,11 +21,6 @@ namespace	NS_TEST
 {
 	void	example1()
 	{
-		/* Example 1 */
-		/* Example for constructor without parametrs */
-		/* Example for size and capacity with int */
-		/* Example for push_back */
-
 		NS::vector<int>	vec;
 		std::cout << "std::vector -> capacity: " << vec.capacity();
 		std::cout << ", size: " << vec.size();

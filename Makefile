@@ -6,11 +6,11 @@
 #    By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 14:17:12 by vismaily          #+#    #+#              #
-#    Updated: 2022/12/10 17:13:29 by vismaily         ###   ########.fr        #
+#    Updated: 2022/12/10 17:20:20 by vismaily         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= test
+NAME			= crash_test
 
 TMP				= Tmp
 
@@ -38,6 +38,7 @@ DEFINES_FT		= $(DEFINES) -D NS=ft  -D NS_TEST=ft_test
 RM				= rm -rf
 
 $(NAME):		$(TMP) $(OBJS)
+				$(CPP) -o $(NAME) $(OBJS)
 
 $(TMP):
 				@mkdir $(TMP)

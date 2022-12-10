@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 18:10:37 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/10 17:05:45 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:23:29 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1536,10 +1536,10 @@ static void	example27()
 
 void	vector_test()
 {
-	std::cout << COLOR_PURPLE_B << "Example 1" << COLOR_END << std::endl;
+	std::cout << COLOR_PURPLE_B << "Example 1" << std::endl;
 	std::cout << COLOR_YELLOW_B;
 	std_test::example1();
-	std::cout << COLOR_GREEN_B;
+	std::cout << COLOR_GREEN_B << std::endl;
 	ft_test::example1();
 	std::cout << COLOR_END << std::endl;
 
