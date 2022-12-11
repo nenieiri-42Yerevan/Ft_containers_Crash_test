@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1.cpp                                              :+:      :+:    :+:   */
+/*   12.cpp                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/10 13:40:01 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/10 18:34:45 by vismaily         ###   ########.fr       */
+/*   Created: 2022/12/11 14:56:26 by vismaily          #+#    #+#             */
+/*   Updated: 2022/12/11 15:31:14 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Example 1 */
-/* Example for constructor without parametrs */
-/* Example for size and capacity with int */
-/* Example for push_back */
+/* Example 12 */
+/* Example for insert */
 
 #include "test.hpp"
 
 namespace	NS_TEST
 {
-	void	example1()
+	void	example12()
 	{
-		NS::vector<int>	vec;
+		NS::vector<int> vec(5, int(58));
 		std::cout << " " << vec.capacity();
 		std::cout << " " << vec.size();
-		vec.push_back(42);
-		std::cout << " " << vec[0];
+		NS::vector<int>::iterator it = vec.begin() + 2;
+		vec.insert(it, 3, 50);
+		vec.insert(vec.begin(), 1, 1);
+		vec.insert(vec.begin(), 0, 2);
+		vec.insert(vec.end(), 3, 2);
+		for (size_t i = 0; i < vec.size(); ++i)
+			std::cout << ' ' << vec[i];
 		std::cout << " " << vec.capacity();
 		std::cout << " " << vec.size();
-		vec.push_back(84);
-		std::cout << " " << vec[1];
-		std::cout << " " << vec.capacity();
-		std::cout << " " << vec.size();
-		vec.push_back(168);
-		std::cout << " " << vec.at(2);
-		std::cout << " " << vec.capacity();
-		std::cout << " " << vec.size();
-		vec.push_back(336);
-		vec.push_back(672);
-		std::cout << " " << vec.at(3);
+		vec.reserve(30);
+		it = vec.begin() + 2;
+		vec.insert(it, 3, -50);
+		vec.insert(vec.begin(), 0, -2);
+		vec.insert(vec.end(), 3, -2);
+		vec.insert(vec.begin(), 1, -1);
+		for (size_t i = 0; i < vec.size(); ++i)
+			std::cout << ' ' << vec[i];
 		std::cout << " " << vec.capacity();
 		std::cout << " " << vec.size();
 	}
