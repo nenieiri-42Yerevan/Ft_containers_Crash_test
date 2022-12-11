@@ -6,258 +6,63 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 18:10:37 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/11 18:11:41 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/11 18:35:32 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.hpp"
+
+/*
+			std::cout << COLOR_YELLOW_B << "std ->" << str1;
+			std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
+			std::cout << COLOR_END << std::endl;
+			*/
+
+static void	vector_run(int num, const std::string (*f1)(), const std::string (*f2)())
+{
+	std::string	str1;
+	std::string	str2;
+
+	str1 = (*f1)();
+	str2 = (*f2)();
+
+	std::cout << COLOR_PURPLE_B << "Case " << num << ": " << COLOR_END;
+	if (str1 == str2)
+		std::cout << COLOR_GREEN_B << "OK" << std::endl;
+	else
+		std::cout << COLOR_GREEN_B << "KO" << std::endl;
+}
 
 void	vector_test()
 {
 	std::string	str1;
 	std::string	str2;
 
-	{
-		str1 = std_test::example1();
-		str2 = ft_test::example1();
-
-		std::cout << COLOR_PURPLE_B << "Example 1" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example2();
-		str2 = ft_test::example2();
-
-		std::cout << COLOR_PURPLE_B << "Example 2" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example3();
-		str2 = ft_test::example3();
-
-		std::cout << COLOR_PURPLE_B << "Example 3" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example4();
-		str2 = ft_test::example4();
-
-		std::cout << COLOR_PURPLE_B << "Example 4" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example5();
-		str2 = ft_test::example5();
-
-		std::cout << COLOR_PURPLE_B << "Example 5" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example6();
-		str2 = ft_test::example6();
-
-		std::cout << COLOR_PURPLE_B << "Example 6" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example7();
-		str2 = ft_test::example7();
-	
-		std::cout << COLOR_PURPLE_B << "Example 7" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example8();
-		str2 = ft_test::example8();
-
-		std::cout << COLOR_PURPLE_B << "Example 8" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example9();
-		str2 = ft_test::example9();
-
-		std::cout << COLOR_PURPLE_B << "Example 9" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example10();
-		str2 = ft_test::example10();
-	
-		std::cout << COLOR_PURPLE_B << "Example 10" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example11();
-		str2 = ft_test::example11();
-	
-		std::cout << COLOR_PURPLE_B << "Example 11" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example12();
-		str2 = ft_test::example12();
-	
-		std::cout << COLOR_PURPLE_B << "Example 12" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example13();
-		str2 = ft_test::example13();
-
-		std::cout << COLOR_PURPLE_B << "Example 13" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example14();
-		str2 = ft_test::example14();
-
-		std::cout << COLOR_PURPLE_B << "Example 14" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example15();
-		str2 = ft_test::example15();
-
-		std::cout << COLOR_PURPLE_B << "Example 15" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example16();
-		str2 = ft_test::example16();
-
-		std::cout << COLOR_PURPLE_B << "Example 16" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example17();
-		str2 = ft_test::example17();
-
-		std::cout << COLOR_PURPLE_B << "Example 17" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example18();
-		str2 = ft_test::example18();
-
-		std::cout << COLOR_PURPLE_B << "Example 18" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example19();
-		str2 = ft_test::example19();
-
-		std::cout << COLOR_PURPLE_B << "Example 19" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example20();
-		str2 = ft_test::example20();
-
-		std::cout << COLOR_PURPLE_B << "Example 20" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example21();
-		str2 = ft_test::example21();
-
-		std::cout << COLOR_PURPLE_B << "Example 21" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example22();
-		str2 = ft_test::example22();
-
-		std::cout << COLOR_PURPLE_B << "Example 22" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example23();
-		str2 = ft_test::example23();
-
-		std::cout << COLOR_PURPLE_B << "Example 23" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example24();
-		str2 = ft_test::example24();
-
-		std::cout << COLOR_PURPLE_B << "Example 24" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example25();
-		str2 = ft_test::example25();
-
-		std::cout << COLOR_PURPLE_B << "Example 25" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example26();
-		str2 = ft_test::example26();
-
-		std::cout << COLOR_PURPLE_B << "Example 26" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
-	{
-		str1 = std_test::example27();
-		str2 = ft_test::example27();
-
-		std::cout << COLOR_PURPLE_B << "Example 27" << COLOR_END << std::endl;
-		std::cout << COLOR_YELLOW_B << "std ->" << str1;
-		std::cout << COLOR_GREEN_B << std::endl << "ft  ->" << str2;
-		std::cout << COLOR_END << std::endl;
-	}
+	vector_run(1, &(std_test::example1), &(ft_test::example1));
+	vector_run(2, &(std_test::example2), &(ft_test::example2));
+	vector_run(3, &(std_test::example3), &(ft_test::example3));
+	vector_run(4, &(std_test::example4), &(ft_test::example4));
+	vector_run(5, &(std_test::example5), &(ft_test::example5));
+	vector_run(6, &(std_test::example6), &(ft_test::example6));
+	vector_run(7, &(std_test::example7), &(ft_test::example7));
+	vector_run(8, &(std_test::example8), &(ft_test::example8));
+	vector_run(9, &(std_test::example9), &(ft_test::example9));
+	vector_run(10, &(std_test::example10), &(ft_test::example10));
+	vector_run(11, &(std_test::example11), &(ft_test::example11));
+	vector_run(12, &(std_test::example12), &(ft_test::example12));
+	vector_run(13, &(std_test::example13), &(ft_test::example13));
+	vector_run(14, &(std_test::example14), &(ft_test::example14));
+	vector_run(15, &(std_test::example15), &(ft_test::example15));
+	vector_run(16, &(std_test::example16), &(ft_test::example16));
+	vector_run(17, &(std_test::example17), &(ft_test::example17));
+	vector_run(18, &(std_test::example18), &(ft_test::example18));
+	vector_run(19, &(std_test::example19), &(ft_test::example19));
+	vector_run(20, &(std_test::example20), &(ft_test::example20));
+	vector_run(21, &(std_test::example21), &(ft_test::example21));
+	vector_run(22, &(std_test::example22), &(ft_test::example22));
+	vector_run(23, &(std_test::example23), &(ft_test::example23));
+	vector_run(24, &(std_test::example24), &(ft_test::example24));
+	vector_run(25, &(std_test::example25), &(ft_test::example25));
+	vector_run(26, &(std_test::example26), &(ft_test::example26));
+	vector_run(27, &(std_test::example27), &(ft_test::example27));
 }
