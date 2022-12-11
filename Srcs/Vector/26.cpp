@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:37:32 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/11 15:37:40 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/11 18:05:34 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 
 namespace	NS_TEST
 {
-	void	example26()
+	const std::string	example26()
 	{
+		std::ostringstream	ss;
+
 		NS::vector<int> vct(5);
 		NS::vector<int>::iterator	it = vct.begin();
 		NS::vector<int>::iterator	ite = vct.end();
-		std::cout << " " << (ite - it);
+		ss << " " << (ite - it);
 		for (; it != ite; ++it)
 			*it = (ite - it);
 		it = vct.begin();
@@ -35,23 +37,24 @@ namespace	NS_TEST
 			*it = ++i * 7;
 		vct_copy.push_back(42);
 		vct_copy.push_back(21);
-		std::cout << " " << vct.size();
-		std::cout << " " << vct_range.size();
-		std::cout << " " << vct_copy.size();
+		ss << " " << vct.size();
+		ss << " " << vct_range.size();
+		ss << " " << vct_copy.size();
 		vct = vct_copy;
 		vct_copy = vct_range;
 		vct_range.clear();
 		it = vct.begin();
 		for (; it != vct.end(); ++it)
-			std::cout << " " << *it;
+			ss << " " << *it;
 		it = vct_range.begin();
 		for (; it != vct_range.end(); ++it)
-			std::cout << " " << *it;
+			ss << " " << *it;
 		it = vct_copy.begin();
 		for (; it != vct_copy.end(); ++it)
-			std::cout << " " << *it;
-		std::cout << " " << vct.size();
-		std::cout << " " << vct_range.size();
-		std::cout << " " << vct_copy.size();
+			ss << " " << *it;
+		ss << " " << vct.size();
+		ss << " " << vct_range.size();
+		ss << " " << vct_copy.size();
+		return (ss.str());
 	}
 }

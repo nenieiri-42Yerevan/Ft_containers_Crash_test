@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 18:10:36 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/11 15:32:55 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:27:45 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,17 @@
 
 namespace	NS_TEST
 {
-	void	example4()
+	const std::string	example4()
 	{
+		std::ostringstream	ss;
+
 		const NS::vector<int> vec(3, int(58));
-		std::cout << " " << vec.capacity();
-		std::cout << " " << vec.size();
-		std::cout << " " << vec[0];
-		std::cout << " " << vec.front();
-		std::cout << " " << vec[0];
-		std::cout << " " << vec.back();
+		(ss << " ", ss << vec.capacity());
+		(ss << " ", ss << vec.size());
+		(ss << " ", ss << vec[0]);
+		(ss << " ", ss << vec.front());
+		(ss << " ", ss << vec[0]);
+		(ss << " ", ss << vec.back());
+		return (ss.str());
 	}
 }

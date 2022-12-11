@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 18:21:49 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/11 15:32:28 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:31:15 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,24 @@
 
 namespace	NS_TEST
 {
-	void	example6()
+	const std::string	example6()
 	{
-		long double	*p;
+		std::ostringstream	ss;
+		long double			*p;
 
 		NS::vector<long double> vec(5, (long double)(41));
-		std::cout << " " << vec.capacity();
-		std::cout << " " << vec.size();
+		(ss << " ", ss << vec.capacity());
+		(ss << " ", ss << vec.size());
 		vec.max_size();
 		p = vec.get_allocator().allocate(3);
 		for (int i = 0; i < 3; ++i)
 			vec.get_allocator().construct(&p[i], i);
 		for (int i = 0; i < 3; ++i)
 		{
-			std::cout << ' ' << p[i];
+			(ss << ' ', ss << p[i]);
 			vec.get_allocator().destroy(&p[i]);
 		}
 		vec.get_allocator().deallocate(p, 3);
+		return (ss.str());
 	}
 }

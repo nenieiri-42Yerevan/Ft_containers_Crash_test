@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:34:39 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/11 15:34:47 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:50:30 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,32 @@
 
 namespace	NS_TEST
 {
-	void	example18()
+	const std::string	example18()
 	{
+		std::ostringstream	ss;
+
 		NS::vector<int> vec(5, int(42));
-		std::cout << " " << vec.capacity();
-		std::cout << " " << vec.size();
+		ss << " " << vec.capacity();
+		ss << " " << vec.size();
 		for (size_t i = 0; i < vec.size(); ++i)
-			std::cout << ' ' << vec[i];
+			ss << ' ' << vec[i];
 		NS::vector<int> vec2(2, int(21));
 		vec.assign(vec2.begin(), vec2.end());
-		std::cout << " " << vec.capacity();
-		std::cout << " " << vec.size();
+		ss << " " << vec.capacity();
+		ss << " " << vec.size();
 		for (size_t i = 0; i < vec.size(); ++i)
-			std::cout << ' ' << vec[i];
+			ss << ' ' << vec[i];
 		vec2.assign(11, 42);
 		vec.assign(vec2.begin(), vec2.end());
-		std::cout << " " << vec.capacity();
-		std::cout << " " << vec.size();
+		ss << " " << vec.capacity();
+		ss << " " << vec.size();
 		for (size_t i = 0; i < vec.size(); ++i)
-			std::cout << ' ' << vec[i];
+			ss << ' ' << vec[i];
 		vec.assign(vec2.begin(), vec2.begin());
-		std::cout << " " << vec.capacity();
-		std::cout << " " << vec.size();
+		ss << " " << vec.capacity();
+		ss << " " << vec.size();
 		for (size_t i = 0; i < vec.size(); ++i)
-			std::cout << ' ' << vec[i];
+			ss << ' ' << vec[i];
+		return (ss.str());
 	}
 }

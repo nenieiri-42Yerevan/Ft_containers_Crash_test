@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 13:29:35 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/10 18:14:45 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:15:06 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <sstream>
 # include <iomanip>
 # include <stdexcept>
 # include <vector>
@@ -35,64 +36,64 @@
 
 namespace	std_test
 {
-	void example1();
-	void example2();
-	void example3();
-	void example4();
-	void example5();
-	void example6();
-	void example7();
-	void example8();
-	void example9();
-	void example10();
-	void example11();
-	void example12();
-	void example13();
-	void example14();
-	void example15();
-	void example16();
-	void example17();
-	void example18();
-	void example19();
-	void example20();
-	void example21();
-	void example22();
-	void example23();
-	void example24();
-	void example25();
-	void example26();
-	void example27();
+	const std::string	example1();
+	const std::string	example2();
+	const std::string	example3();
+	const std::string	example4();
+	const std::string	example5();
+	const std::string	example6();
+	const std::string	example7();
+	const std::string	example8();
+	const std::string	example9();
+	const std::string	example10();
+	const std::string	example11();
+	const std::string	example12();
+	const std::string	example13();
+	const std::string	example14();
+	const std::string	example15();
+	const std::string	example16();
+	const std::string	example17();
+	const std::string	example18();
+	const std::string	example19();
+	const std::string	example20();
+	const std::string	example21();
+	const std::string	example22();
+	const std::string	example23();
+	const std::string	example24();
+	const std::string	example25();
+	const std::string	example26();
+	const std::string	example27();
 }
 
 namespace	ft_test
 {
-	void example1();
-	void example2();
-	void example3();
-	void example4();
-	void example5();
-	void example6();
-	void example7();
-	void example8();
-	void example9();
-	void example10();
-	void example11();
-	void example12();
-	void example13();
-	void example14();
-	void example15();
-	void example16();
-	void example17();
-	void example18();
-	void example19();
-	void example20();
-	void example21();
-	void example22();
-	void example23();
-	void example24();
-	void example25();
-	void example26();
-	void example27();
+	const std::string	example1();
+	const std::string	example2();
+	const std::string	example3();
+	const std::string	example4();
+	const std::string	example5();
+	const std::string	example6();
+	const std::string	example7();
+	const std::string	example8();
+	const std::string	example9();
+	const std::string	example10();
+	const std::string	example11();
+	const std::string	example12();
+	const std::string	example13();
+	const std::string	example14();
+	const std::string	example15();
+	const std::string	example16();
+	const std::string	example17();
+	const std::string	example18();
+	const std::string	example19();
+	const std::string	example20();
+	const std::string	example21();
+	const std::string	example22();
+	const std::string	example23();
+	const std::string	example24();
+	const std::string	example25();
+	const std::string	example26();
+	const std::string	example27();
 }
 
 void	vector_test();

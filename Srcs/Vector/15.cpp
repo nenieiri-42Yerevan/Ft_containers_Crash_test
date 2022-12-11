@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:33:35 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/11 15:33:46 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:46:29 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,39 +17,42 @@
 
 namespace	NS_TEST
 {
-	void	example15()
+	const std::string	example15()
 	{
+		std::ostringstream	ss;
+
 		NS::vector<int> vec;
 		for (size_t i = 0; i < 9; ++i)
 			vec.push_back(i);
-		std::cout << " " << vec.capacity();
-		std::cout << " " << vec.size();
+		ss << " " << vec.capacity();
+		ss << " " << vec.size();
 		for (size_t i = 0; i < vec.size(); ++i)
-			std::cout << ' ' << vec[i];
+			ss << ' ' << vec[i];
 		NS::vector<int>::iterator it;
 		it = vec.erase(vec.begin() + 1);
-		std::cout << " " << *it;
+		ss << " " << *it;
 		for (size_t i = 0; i < vec.size(); ++i)
-			std::cout << ' ' << vec[i];
+			ss << ' ' << vec[i];
 		it = vec.erase(vec.begin() + 2, vec.end() - 2);
-		std::cout << " " << *it;
+		ss << " " << *it;
 		for (size_t i = 0; i < vec.size(); ++i)
-			std::cout << ' ' << vec[i];
+			ss << ' ' << vec[i];
 		it = vec.erase(vec.begin(), vec.begin() + 1);
-		std::cout << " " << *it;
+		ss << " " << *it;
 		for (size_t i = 0; i < vec.size(); ++i)
-			std::cout << ' ' << vec[i];
+			ss << ' ' << vec[i];
 		it = vec.erase(vec.begin(), vec.begin());
-		std::cout << " " << *it;
+		ss << " " << *it;
 		it = vec.erase(vec.end() - 2, vec.end() - 1);
 		for (size_t i = 0; i < vec.size(); ++i)
-			std::cout << ' ' << vec[i];
-		std::cout << " " << *it;
+			ss << ' ' << vec[i];
+		ss << " " << *it;
 		it = vec.erase(vec.begin(), vec.end());
-		std::cout << " " << *it;
-		std::cout << " " << vec.capacity();
-		std::cout << " " << vec.size();
+		ss << " " << *it;
+		ss << " " << vec.capacity();
+		ss << " " << vec.size();
 		for (size_t i = 0; i < vec.size(); ++i)
-			std::cout << ' ' << vec[i];
+			ss << ' ' << vec[i];
+		return (ss.str());
 	}
 }

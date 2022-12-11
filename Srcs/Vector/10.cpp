@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 18:39:20 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/11 15:31:47 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:41:44 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,30 @@
 
 namespace	NS_TEST
 {
-	void	example10()
+	const std::string	example10()
 	{
+		std::ostringstream	ss;
+
 		NS::vector< int> vec;
 		for (size_t i = 50; i < 55; ++i)
 			vec.push_back(i);
 		for (size_t i = 0; i < vec.size(); ++i)
-			std::cout << ' ' << vec[i];
+			ss << ' ' << vec[i];
 		NS::vector<int>::const_iterator	it1 = vec.begin();
 		NS::vector<int>::const_iterator	it2 = vec.begin() + 2;
-		std::cout << " " << (it2 - it1);
-		std::cout << " " << (it2 > it1);
-		std::cout << " " << (it2 < it1);
-		std::cout << " " << (it2 >= it1);
-		std::cout << " " << (it2 <= it1);
-		std::cout << " " << (it2 == it1);
-		std::cout << " " << (it2 != it1);
+		ss << " " << (it2 - it1);
+		ss << " " << (it2 > it1);
+		ss << " " << (it2 < it1);
+		ss << " " << (it2 >= it1);
+		ss << " " << (it2 <= it1);
+		ss << " " << (it2 == it1);
+		ss << " " << (it2 != it1);
 		NS::vector<int>::const_iterator	it3 = vec.begin() + 2;
 		NS::vector<int>::const_iterator	it4 = vec.begin() + 2;
-		std::cout << " " << (it4 >= it3);
-		std::cout << " " << (it4 <= it3);
-		std::cout << " " << (it4 == it3);
-		std::cout << " " << (it4 != it3);
+		ss << " " << (it4 >= it3);
+		ss << " " << (it4 <= it3);
+		ss << " " << (it4 == it3);
+		ss << " " << (it4 != it3);
+		return (ss.str());
 	}
 }
