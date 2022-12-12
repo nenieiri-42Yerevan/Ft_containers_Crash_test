@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:32:11 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 16:32:19 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:11:46 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ namespace	NS_TEST
 		NS::map<int, int>::iterator it;
 		for (int i = 11; i < 70; i += 10) {
 			it = mp2.upper_bound(i);
-			v.push_back(it->first);
+			if (i == 11)
+				v.push_back((it == mp2.end()));
+			else
+				v.push_back(it->first);
 		}
 		for (NS::vector<int>::iterator it1 = v.begin(); it1 != v.end(); ++it1)
 			ss << " " << *it1;

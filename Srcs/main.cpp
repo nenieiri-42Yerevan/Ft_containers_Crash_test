@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 12:20:25 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 17:38:44 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:11:46 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static void	run(int num, const std::string (*f1)(), const std::string (*f2)())
 	else
 	{
 		std::cout << COLOR_RED_B << "KO" << std::endl << COLOR_END;
+		std::cout << COLOR_RED_B << "Your grade is 0/100. Fix mistake and try again!!!";
+		std::cout << std::endl << COLOR_END;
 		do
 		{
 			std::cout << COLOR_YELLOW_B;
