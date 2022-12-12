@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 12:20:25 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 15:13:25 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:38:44 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,30 @@ int	main()
 		std::cout << std::endl;
 		run(1, &(std_test::stack_example1), &(ft_test::stack_example1));
 		run(2, &(std_test::stack_example2), &(ft_test::stack_example2));
+
+		std::cout << std::endl;
+		run(1, &(std_test::map_example1), &(ft_test::map_example1));
+		run(2, &(std_test::map_example2), &(ft_test::map_example2));
+		run(3, &(std_test::map_example3), &(ft_test::map_example3));
+		run(4, &(std_test::map_example4), &(ft_test::map_example4));
+		run(5, &(std_test::map_example5), &(ft_test::map_example5));
+		run(6, &(std_test::map_example6), &(ft_test::map_example6));
+		run(7, &(std_test::map_example7), &(ft_test::map_example7));
+		run(8, &(std_test::map_example8), &(ft_test::map_example8));
+		run(9, &(std_test::map_example9), &(ft_test::map_example9));
+		run(10, &(std_test::map_example10), &(ft_test::map_example10));
+		run(11, &(std_test::map_example11), &(ft_test::map_example11));
+		run(12, &(std_test::map_example12), &(ft_test::map_example12));
+		run(13, &(std_test::map_example13), &(ft_test::map_example13));
+		run(14, &(std_test::map_example14), &(ft_test::map_example14));
+		run(15, &(std_test::map_example15), &(ft_test::map_example15));
+		run(16, &(std_test::map_example16), &(ft_test::map_example16));
+		run(17, &(std_test::map_example17), &(ft_test::map_example17));
+		run(18, &(std_test::map_example18), &(ft_test::map_example18));
+		run(19, &(std_test::map_example19), &(ft_test::map_example19));
+		run(20, &(std_test::map_example20), &(ft_test::map_example20));
+		run(21, &(std_test::map_example21), &(ft_test::map_example21));
+		run(22, &(std_test::map_example22), &(ft_test::map_example22));
 	}
 	catch (const std::exception &e)
 	{
