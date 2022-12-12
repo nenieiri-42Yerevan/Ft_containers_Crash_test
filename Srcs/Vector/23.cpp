@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:36:22 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/11 18:01:11 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:28:06 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 namespace	NS_TEST
 {
-	const std::string	example23()
+	const std::string	vec_example23()
 	{
 		std::ostringstream	ss;
 

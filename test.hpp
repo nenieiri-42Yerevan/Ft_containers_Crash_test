@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 13:29:35 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 13:03:10 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:24:14 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,64 +37,64 @@
 
 namespace	std_test
 {
-	const std::string	example1();
-	const std::string	example2();
-	const std::string	example3();
-	const std::string	example4();
-	const std::string	example5();
-	const std::string	example6();
-	const std::string	example7();
-	const std::string	example8();
-	const std::string	example9();
-	const std::string	example10();
-	const std::string	example11();
-	const std::string	example12();
-	const std::string	example13();
-	const std::string	example14();
-	const std::string	example15();
-	const std::string	example16();
-	const std::string	example17();
-	const std::string	example18();
-	const std::string	example19();
-	const std::string	example20();
-	const std::string	example21();
-	const std::string	example22();
-	const std::string	example23();
-	const std::string	example24();
-	const std::string	example25();
-	const std::string	example26();
-	const std::string	example27();
+	const std::string	vec_example1();
+	const std::string	vec_example2();
+	const std::string	vec_example3();
+	const std::string	vec_example4();
+	const std::string	vec_example5();
+	const std::string	vec_example6();
+	const std::string	vec_example7();
+	const std::string	vec_example8();
+	const std::string	vec_example9();
+	const std::string	vec_example10();
+	const std::string	vec_example11();
+	const std::string	vec_example12();
+	const std::string	vec_example13();
+	const std::string	vec_example14();
+	const std::string	vec_example15();
+	const std::string	vec_example16();
+	const std::string	vec_example17();
+	const std::string	vec_example18();
+	const std::string	vec_example19();
+	const std::string	vec_example20();
+	const std::string	vec_example21();
+	const std::string	vec_example22();
+	const std::string	vec_example23();
+	const std::string	vec_example24();
+	const std::string	vec_example25();
+	const std::string	vec_example26();
+	const std::string	vec_example27();
 }
 
 namespace	ft_test
 {
-	const std::string	example1();
-	const std::string	example2();
-	const std::string	example3();
-	const std::string	example4();
-	const std::string	example5();
-	const std::string	example6();
-	const std::string	example7();
-	const std::string	example8();
-	const std::string	example9();
-	const std::string	example10();
-	const std::string	example11();
-	const std::string	example12();
-	const std::string	example13();
-	const std::string	example14();
-	const std::string	example15();
-	const std::string	example16();
-	const std::string	example17();
-	const std::string	example18();
-	const std::string	example19();
-	const std::string	example20();
-	const std::string	example21();
-	const std::string	example22();
-	const std::string	example23();
-	const std::string	example24();
-	const std::string	example25();
-	const std::string	example26();
-	const std::string	example27();
+	const std::string	vec_example1();
+	const std::string	vec_example2();
+	const std::string	vec_example3();
+	const std::string	vec_example4();
+	const std::string	vec_example5();
+	const std::string	vec_example6();
+	const std::string	vec_example7();
+	const std::string	vec_example8();
+	const std::string	vec_example9();
+	const std::string	vec_example10();
+	const std::string	vec_example11();
+	const std::string	vec_example12();
+	const std::string	vec_example13();
+	const std::string	vec_example14();
+	const std::string	vec_example15();
+	const std::string	vec_example16();
+	const std::string	vec_example17();
+	const std::string	vec_example18();
+	const std::string	vec_example19();
+	const std::string	vec_example20();
+	const std::string	vec_example21();
+	const std::string	vec_example22();
+	const std::string	vec_example23();
+	const std::string	vec_example24();
+	const std::string	vec_example25();
+	const std::string	vec_example26();
+	const std::string	vec_example27();
 }
 
 void	vector_test();
