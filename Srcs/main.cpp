@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 12:20:25 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 18:11:46 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:31:07 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ static void	run(int num, const std::string (*f1)(), const std::string (*f2)())
 	str2 = (*f2)();
 
 	std::cout << COLOR_PURPLE_B << "Case " << std::setw(2) << num << ": " << COLOR_END;
+	std::cout << "RET&OUT: ";
 	if (str1 == str2)
-		std::cout << COLOR_GREEN_B << "OK" << COLOR_END << std::endl;
+		std::cout << COLOR_GREEN_B << "✅ OK | " << COLOR_END << std::endl;
 	else
 	{
-		std::cout << COLOR_RED_B << "KO" << std::endl << COLOR_END;
+		std::cout << COLOR_RED_B << "❌ KO | " << std::endl << COLOR_END;
 		std::cout << COLOR_RED_B << "Your grade is 0/100. Fix mistake and try again!!!";
 		std::cout << std::endl << COLOR_END;
 		do
