@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 12:20:25 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 14:55:34 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:13:25 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static void	run(int num, const std::string (*f1)(), const std::string (*f2)())
 		} while (diff != 'y' && diff != 'n');
 		if (diff == 'y')
 		{
-			std::cout << COLOR_BLUE_B << "std ->" << str1 << COLOR_END << std::endl;
-			std::cout << COLOR_GREEN_B << "ft  ->" << str2 << COLOR_END << std::endl;
+			std::cout << COLOR_GREEN_B << "std ->" << str1 << COLOR_END << std::endl;
+			std::cout << COLOR_RED_B << "ft  ->" << str2 << COLOR_END << std::endl;
 		}
 		ss << num;
 		throw std::logic_error(ss.str());
