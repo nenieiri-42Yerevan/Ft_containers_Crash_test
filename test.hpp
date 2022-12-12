@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 13:29:35 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 15:15:53 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:36:02 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <vector>
 # include <stack>
 # include <map>
+# include <list>
+# include <deque>
 
 # include V
 # include S

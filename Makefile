@@ -6,7 +6,7 @@
 #    By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 14:17:12 by vismaily          #+#    #+#              #
-#    Updated: 2022/12/12 15:15:45 by vismaily         ###   ########.fr        #
+#    Updated: 2022/12/12 16:34:58 by vismaily         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ CPP_FLAGS		= -Wall -Wextra -Werror -Wno-unused -Wno-unused-parameter
 
 INCLUDES		= -I./
 
-DEFINES			= -D V=\"$(Vdef)\" -D S=\"$(Sdef)\" -D S=\"$(Mdef)\"
+DEFINES			= -D V=\"$(Vdef)\" -D S=\"$(Sdef)\" -D M=\"$(Mdef)\"
 DEFINES_STD		= $(DEFINES) -D NS=std -D NS_TEST=std_test
 DEFINES_FT		= $(DEFINES) -D NS=ft  -D NS_TEST=ft_test
 
@@ -64,6 +64,12 @@ $(TMP)/%_std.o:	$(PATH_STACK)/%.cpp
 				@$(CPP) $(CPP_FLAGS) $(INCLUDES) $(DEFINES_STD) -c $< -o $@
 
 $(TMP)/%_ft.o:	$(PATH_STACK)/%.cpp
+				@$(CPP) $(CPP_FLAGS) $(INCLUDES) $(DEFINES_FT) -c $< -o $@
+
+$(TMP)/%_std.o:	$(PATH_MAP)/%.cpp
+				@$(CPP) $(CPP_FLAGS) $(INCLUDES) $(DEFINES_STD) -c $< -o $@
+
+$(TMP)/%_ft.o:	$(PATH_MAP)/%.cpp
 				@$(CPP) $(CPP_FLAGS) $(INCLUDES) $(DEFINES_FT) -c $< -o $@
 
 $(TMP)/%.o:		$(PATH)/%.cpp
