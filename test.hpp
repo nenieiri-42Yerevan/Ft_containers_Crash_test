@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 13:29:35 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/11 17:15:06 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:03:10 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TEST_HPP
 
 # include <iostream>
+# include <iomanip>
 # include <string>
 # include <sstream>
 # include <iomanip>
