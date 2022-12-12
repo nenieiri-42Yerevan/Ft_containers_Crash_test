@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 12:20:25 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 14:32:17 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:55:34 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	run(int num, const std::string (*f1)(), const std::string (*f2)())
 		} while (diff != 'y' && diff != 'n');
 		if (diff == 'y')
 		{
-			std::cout << COLOR_YELLOW_B << "std ->" << str1 << COLOR_END << std::endl;
+			std::cout << COLOR_BLUE_B << "std ->" << str1 << COLOR_END << std::endl;
 			std::cout << COLOR_GREEN_B << "ft  ->" << str2 << COLOR_END << std::endl;
 		}
 		ss << num;
@@ -83,6 +83,10 @@ int	main()
 		run(25, &(std_test::vec_example25), &(ft_test::vec_example25));
 		run(26, &(std_test::vec_example26), &(ft_test::vec_example26));
 		run(27, &(std_test::vec_example27), &(ft_test::vec_example27));
+
+		std::cout << std::endl;
+		run(1, &(std_test::stack_example1), &(ft_test::stack_example1));
+		run(2, &(std_test::stack_example2), &(ft_test::stack_example2));
 	}
 	catch (const std::exception &e)
 	{

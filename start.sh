@@ -2,6 +2,7 @@
 
 . ./config.sh
 
-make Vdef=$vector
+make fclean
+make Vdef=$vector Sdef=$stack
 
 ./crash_test

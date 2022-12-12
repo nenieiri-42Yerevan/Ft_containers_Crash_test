@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 13:29:35 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 14:24:14 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:59:07 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,18 @@
 # include <map>
 
 # include V
+# include S
 
-# define FT					"ft"
-# define STD				"std"
 # define COLOR_YELLOW_B		"\033[1;33m"
+# define COLOR_YELLOW		"\033[0;33m"
 # define COLOR_PURPLE_B		"\033[1;35m"
+# define COLOR_PURPLE		"\033[0;35m"
 # define COLOR_BLUE_B		"\033[1;34m"
+# define COLOR_BLUE			"\033[0;34m"
 # define COLOR_GREEN_B		"\033[1;32m"
 # define COLOR_GREEN		"\033[0;32m"
 # define COLOR_RED_B		"\033[1;31m"
+# define COLOR_RED			"\033[0;31m"
 # define COLOR_END			"\033[0m"
 
 namespace	std_test
@@ -64,6 +67,9 @@ namespace	std_test
 	const std::string	vec_example25();
 	const std::string	vec_example26();
 	const std::string	vec_example27();
+
+	const std::string	stack_example1();
+	const std::string	stack_example2();
 }
 
 namespace	ft_test
@@ -95,10 +101,9 @@ namespace	ft_test
 	const std::string	vec_example25();
 	const std::string	vec_example26();
 	const std::string	vec_example27();
-}
 
-void	vector_test();
-void	stack_test();
-void	map_test();
+	const std::string	stack_example1();
+	const std::string	stack_example2();
+}
 
 #endif
