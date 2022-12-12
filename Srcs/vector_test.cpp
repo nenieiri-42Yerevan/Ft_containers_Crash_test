@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 18:10:37 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 13:13:54 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:43:43 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	vector_run(int num, const std::string (*f1)(), const std::string (*f
 	std::ostringstream	ss;
 	std::string			str1;
 	std::string			str2;
+	char				diff;
 
 	str1 = (*f1)();
 	str2 = (*f2)();
@@ -32,7 +33,23 @@ static void	vector_run(int num, const std::string (*f1)(), const std::string (*f
 		std::cout << COLOR_GREEN_B << "OK" << COLOR_END << std::endl;
 	else
 	{
-		std::cout << COLOR_RED_B << "KO" << COLOR_END << std::endl;
+		std::cout << COLOR_RED_B << "KO" << std::endl << COLOR_END;
+		do
+		{
+			std::cout << COLOR_YELLOW_B;
+			std::cout << "Do you want to see differents? [y] or [n]: " << COLOR_END;
+			std::cout << COLOR_GREEN_B;
+			std::cin >> diff;
+			std::cout << COLOR_END;
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			if (std::cin.eof() || std::cin.fail())
+				break ;
+		} while (diff != 'y' && diff != 'n');
+		if (diff == 'y')
+		{
+			std::cout << COLOR_YELLOW_B << "std ->" << str1 << COLOR_END << std::endl;
+			std::cout << COLOR_GREEN_B << "ft  ->" << str2 << COLOR_END << std::endl;
+		}
 		ss << num;
 		throw std::logic_error(ss.str());
 	}
@@ -75,6 +92,6 @@ void	vector_test()
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << e.what().stoi() << std::endl;
+//		std::cout << e.what().stoi() << std::endl;
 	}
 }
