@@ -4,3 +4,4 @@
 *.a
 a.out
 crash_test
+Tmp/

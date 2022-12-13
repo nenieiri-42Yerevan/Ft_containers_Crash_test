@@ -2,6 +2,19 @@
 
 . ./config.sh
 
+CPP='c++';
+CPP_FLAGS='-Wall -Wextra -Werror -I./';
+defines_ft="-D NS=ft -D NS_TEST=ft_test -D V=\"$vector\" -D S=\"$stack\" -D M=\"$map\"";
+defines_std="-D NS=std -D NS_TEST=std_test -D V=\"$vector\" -D S=\"$stack\" -D M=\"$map\"";
+
+NAME="crash_test";
+
+SRCS="./Srcs/";
+TMP="./Tmp/";
+
+################################### VECTOR #####################################
+
+VECTOR=$SRCS"Vector/";
 VECTOR_FUNCTIONS=(
 					"vec_example1"
 					"vec_example2"
@@ -32,30 +45,80 @@ VECTOR_FUNCTIONS=(
 					"vec_example27"
 				 );
 
-CPP='c++';
-CPP_FLAGS='-Wall -Wextra -Werror -I./';
-defines_ft="-D NS=ft -D NS_TEST=ft_test -D V=\"$vector\" -D S=\"$stack\" -D M=\"$map\"";
-defines_std="-D NS=std -D NS_TEST=std_test -D V=\"$vector\" -D S=\"$stack\" -D M=\"$map\"";
+for FUNC in "${VECTOR_FUNCTIONS[@]}"
+do
+	VECT_PROTOTYPES+="const std::string $FUNC(); ";
+done
 
-NAME="crash_test";
+################################################################################
+#################################### STACK #####################################
 
-SRCS="./Srcs/";
-TMP="./Tmp/";
+STACK=$SRCS"Stack/";
+STACK_FUNCTIONS=(
+					"stack_example1"
+					"stack_example2"
+				);
+
+for FUNC in "${STACK_FUNCTIONS[@]}"
+do
+	STACK_PROTOTYPES+="const std::string $FUNC(); ";
+done
+
+###############################################################################
+#################################### MAP ######################################
+
+MAP=$SRCS"Map/";
+MAP_FUNCTIONS=(
+				"map_example1"
+				"map_example2"
+				"map_example3"
+				"map_example4"
+				"map_example5"
+				"map_example6"
+				"map_example7"
+				"map_example8"
+				"map_example9"
+				"map_example10"
+				"map_example11"
+				"map_example12"
+				"map_example13"
+				"map_example14"
+				"map_example15"
+				"map_example16"
+				"map_example17"
+				"map_example18"
+				"map_example19"
+				"map_example20"
+				"map_example21"
+				"map_example22"
+			  );
+
+for FUNC in "${MAP_FUNCTIONS[@]}"
+do
+	MAP_PROTOTYPES+="const std::string $FUNC(); ";
+done
+
+###############################################################################
 
 mkdir -p $TMP;
 
-VECTOR=$SRCS"Vector/";
-STACK=$SRCS"Srack/";
-MAP=$SRCS"Map/";
-
 RUN_SRC=$SRCS"run.cpp";
 RUN_OBJ=$TMP"run.o";
-$CPP $CPP_FLAGS $defines_ft -o $RUN_OBJ -c $RUN_SRC;
 
 MAIN_SRC=$SRCS"main.cpp";
 MAIN_OBJ=$TMP"main.o";
 
-LEN=${#VECTOR_FUNCTIONS[@]}
+PROTOTYPES_CONTENT="{ $VECT_PROTOTYPES $STACK_PROTOTYPES $MAP_PROTOTYPES }"
+echo "namespace std_test $PROTOTYPES_CONTENT" >> $TMP"PROTOTYPES";
+echo "namespace ft_test $PROTOTYPES_CONTENT" >> $TMP"PROTOTYPES";
+PROTOTYPES="-D PROTOTYPES=\"$TMP"
+PROTOTYPES+='PROTOTYPES"';
+
+$CPP $CPP_FLAGS $PROTOTYPES -o $RUN_OBJ -c $RUN_SRC;
+
+###############################################################################
+################################### VECTOR #####################################
+
 for FUNC in "${VECTOR_FUNCTIONS[@]}"
 do
 	F1_SRC=$VECTOR"$FUNC".cpp;
@@ -63,13 +126,55 @@ do
 	F1_OBJ_FT=$TMP"$FUNC"_ft.o;
 
 	N=${FUNC:11}
-	$CPP $CPP_FLAGS $defines_std -c $F1_SRC -o $F1_OBJ_STD;
-	$CPP $CPP_FLAGS $defines_ft -c $F1_SRC -o $F1_OBJ_FT;
-	$CPP $CPP_FLAGS $defines_ft -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
+	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
+	$CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT;
+	$CPP $CPP_FLAGS $PROTOTYPES -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
 
 	$CPP -o $NAME $F1_OBJ_STD $F1_OBJ_FT $RUN_OBJ $MAIN_OBJ;
 
 	./$NAME;
 done
+
+###############################################################################
+echo ;
+#################################### STACK #####################################
+
+for FUNC in "${STACK_FUNCTIONS[@]}"
+do
+	F1_SRC=$STACK"$FUNC".cpp;
+	F1_OBJ_STD=$TMP"$FUNC"_std.o;
+	F1_OBJ_FT=$TMP"$FUNC"_ft.o;
+
+	N=${FUNC:13}
+	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
+	$CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT;
+	$CPP $CPP_FLAGS $PROTOTYPES -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
+
+	$CPP -o $NAME $F1_OBJ_STD $F1_OBJ_FT $RUN_OBJ $MAIN_OBJ;
+
+	./$NAME;
+done
+
+###############################################################################
+echo ;
+##################################### MAP ######################################
+
+for FUNC in "${MAP_FUNCTIONS[@]}"
+do
+	F1_SRC=$MAP"$FUNC".cpp;
+	F1_OBJ_STD=$TMP"$FUNC"_std.o;
+	F1_OBJ_FT=$TMP"$FUNC"_ft.o;
+
+	N=${FUNC:11}
+	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
+	$CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT;
+	$CPP $CPP_FLAGS $PROTOTYPES -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
+
+	$CPP -o $NAME $F1_OBJ_STD $F1_OBJ_FT $RUN_OBJ $MAIN_OBJ;
+
+	./$NAME;
+done
+
+###############################################################################
 
 rm -rf $TMP $NAME;
