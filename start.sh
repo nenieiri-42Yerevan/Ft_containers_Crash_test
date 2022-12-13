@@ -10,7 +10,7 @@ defines_std="-D NS=std -D NS_TEST=std_test -D V=\"$vector\" -D S=\"$stack\" -D M
 NAME="crash_test";
 
 SRCS="./Srcs/";
-TMP="./Tmp/";
+TMP=$SRCS"Tmp/";
 
 ################################### VECTOR #####################################
 
