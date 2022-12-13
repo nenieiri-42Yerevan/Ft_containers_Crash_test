@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 12:20:25 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/13 18:24:03 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:54:04 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	run(int num, const std::string (*f1)(), const std::string (*f2)())
 	str1 = (*f1)();
 	str2 = (*f2)();
 
-	std::cout << COLOR_YELLOW_B << "RET&OUT: ";
+	std::cout << COLOR_YELLOW_B << "RETURN & OUTPUT: ";
 	if (str1 == str2)
 		std::cout << COLOR_GREEN_B << "✅ OK" << COLOR_END << std::endl;
 	else
@@ -34,7 +34,7 @@ void	run(int num, const std::string (*f1)(), const std::string (*f2)())
 		{
 			std::cout << COLOR_YELLOW_B;
 			std::cout << "Do you want to see differents? [y] or [n]: " << COLOR_END;
-			std::cout << COLOR_GREEN_B;
+			std::cout << COLOR_PURPLE_B;
 			std::cin >> diff;
 			std::cout << COLOR_END;
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

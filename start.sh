@@ -12,6 +12,8 @@ COLOR_GREEN_B='\033[1;32m';
 COLOR_GREEN='\033[0;32m';
 COLOR_RED_B='\033[1;31m';
 COLOR_RED='\033[0;31m';
+COLOR_CYAN_B='\033[1;36m':
+COLOR_CYAN='\033[0;36m':
 COLOR_END='\033[0m';
 
 CPP='c++';
@@ -145,8 +147,24 @@ do
 	printf "$N:${COLOR_YELLOW_B} COMPILATION: ${COLOR_END}"
 	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
 	if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
-		printf "${COLOR_RED_B}❌ KO${COLOR_END}";
+		printf "${COLOR_RED_B}❌ KO";
 		echo ;
+		printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}";
+		echo ;
+		printf "${COLOR_YELLOW_B}Do you want to see compile error output? [y] or [n]: ";
+		printf "${COLOR_PURPLE_B}";
+		read -n1 ANSWER;
+		printf "${COLOR_END}";
+		echo ;
+		if [ $ANSWER = "y" ]; then
+			echo ;
+			printf "${COLOR_CYAN_B}#####################################################:"
+			echo ;
+			printf "${COLOR_CYAN}";
+			cat $TMP"err";
+			printf "${COLOR_CYAN_B}#####################################################:"
+			echo ;
+		fi
 		rm -rf $TMP $NAME;
 		exit 1;
 	else
@@ -156,7 +174,20 @@ do
 
 	$CPP -o $NAME $F1_OBJ_STD $F1_OBJ_FT $RUN_OBJ $MAIN_OBJ;
 
-	./$NAME;
+	if ! ./$NAME; then
+		printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
+		printf "${COLOR_PURPLE_B}";
+		read -n1 ANSWER;
+		printf "${COLOR_END}";
+		echo ;
+		if [ $ANSWER = "y" ]; then
+			echo ;
+			printf "${COLOR_CYAN}";
+			cat $F1_SRC;
+			echo ;
+		fi
+		exit 1;
+	fi
 done
 echo ;
 
