@@ -2,6 +2,18 @@
 
 . ./config.sh
 
+COLOR_YELLOW_B='\033[1;33m';
+COLOR_YELLOW='\033[0;33m';
+COLOR_PURPLE_B='\033[1;35m';
+COLOR_PURPLE='\033[0;35m';
+COLOR_BLUE_B='\033[1;34m';
+COLOR_BLUE='\033[0;34m';
+COLOR_GREEN_B='\033[1;32m';
+COLOR_GREEN='\033[0;32m';
+COLOR_RED_B='\033[1;31m';
+COLOR_RED='\033[0;31m';
+COLOR_END='\033[0m';
+
 CPP='c++';
 CPP_FLAGS='-Wall -Wextra -Werror -I./Srcs -I./';
 defines_ft="-D NS=ft -D NS_TEST=ft_test -D V=\"$vector\" -D S=\"$stack\" -D M=\"$map\"";
@@ -126,17 +138,29 @@ do
 	F1_OBJ_FT=$TMP"$FUNC"_ft.o;
 
 	N=${FUNC:11}
+	printf "${COLOR_PURPLE_B}Case ";
+	if (($N < 10)); then
+		echo -n " ";
+	fi
+	printf "$N:${COLOR_YELLOW_B} COMPILATION: ${COLOR_END}"
 	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
-	$CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT;
+	if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
+		printf "${COLOR_RED_B}❌ KO${COLOR_END}";
+		echo ;
+		rm -rf $TMP $NAME;
+		exit 1;
+	else
+		printf "${COLOR_GREEN_B}✅ OK ${COLOR_PURPLE_B}| ${COLOR_END}";
+	fi
 	$CPP $CPP_FLAGS $PROTOTYPES -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
 
 	$CPP -o $NAME $F1_OBJ_STD $F1_OBJ_FT $RUN_OBJ $MAIN_OBJ;
 
 	./$NAME;
 done
+echo ;
 
 ###############################################################################
-echo ;
 #################################### STACK #####################################
 
 for FUNC in "${STACK_FUNCTIONS[@]}"
@@ -147,16 +171,19 @@ do
 
 	N=${FUNC:13}
 	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
-	$CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT;
+	if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
+		rm -rf $TMP $NAME;
+		exit 1;
+	fi
 	$CPP $CPP_FLAGS $PROTOTYPES -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
 
 	$CPP -o $NAME $F1_OBJ_STD $F1_OBJ_FT $RUN_OBJ $MAIN_OBJ;
 
 	./$NAME;
 done
+echo ;
 
 ###############################################################################
-echo ;
 ##################################### MAP ######################################
 
 for FUNC in "${MAP_FUNCTIONS[@]}"
@@ -167,7 +194,10 @@ do
 
 	N=${FUNC:11}
 	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
-	$CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT;
+	if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
+		rm -rf $TMP $NAME;
+		exit 1;
+	fi
 	$CPP $CPP_FLAGS $PROTOTYPES -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
 
 	$CPP -o $NAME $F1_OBJ_STD $F1_OBJ_FT $RUN_OBJ $MAIN_OBJ;
@@ -178,3 +208,5 @@ done
 ###############################################################################
 
 rm -rf $TMP $NAME;
+
+exit 0;
