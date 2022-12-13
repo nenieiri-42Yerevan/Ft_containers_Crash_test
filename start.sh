@@ -3,7 +3,7 @@
 . ./config.sh
 
 CPP='c++';
-CPP_FLAGS='-Wall -Wextra -Werror -I./';
+CPP_FLAGS='-Wall -Wextra -Werror -I./Srcs -I./';
 defines_ft="-D NS=ft -D NS_TEST=ft_test -D V=\"$vector\" -D S=\"$stack\" -D M=\"$map\"";
 defines_std="-D NS=std -D NS_TEST=std_test -D V=\"$vector\" -D S=\"$stack\" -D M=\"$map\"";
 
