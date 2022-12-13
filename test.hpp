@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 13:29:35 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 16:36:02 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/13 13:49:17 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 # define COLOR_RED_B		"\033[1;31m"
 # define COLOR_RED			"\033[0;31m"
 # define COLOR_END			"\033[0m"
+
+void	run(int num, const std::string (*f1)(), const std::string (*f2)());
 
 namespace	std_test
 {
