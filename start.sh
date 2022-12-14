@@ -146,9 +146,9 @@ printf "#     42 Yerevan | ft_containers crash test | Author: Volodya Ismailyan 
 printf "#                                                                                      #\n";
 printf "########################################################################################\n\n";
 
-LEAKS_COMMAND=$(whereis leaks);
+LEAKS_COMMAND=$(which leaks);
 if [ -z "$LEAKS_COMMAND" ]; then
-	LEAKS_COMMAND=$(whereis valgrind);
+	LEAKS_COMMAND=$(which valgrind);
 	if [ -z "$LEAKS_COMMAND" ]; then
 		printf "${COLOR_RED_B}'leaks' or 'valgrind' command doesn't found,"
 		printf " so leaks will not be checked. ${COLOR_END}\n\n"
@@ -237,14 +237,16 @@ do
 		rm -rf $TMP $NAME;
 		exit 1;
 	fi
+#	echo "valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
 	if [ $LEAKS_ON = "1" ] || [ $LEAKS_ON = "2" ]; then
 		printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
 		if [ $LEAKS_ON = "1"  ]; then
 			LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
 		else
+			valgrind --leak-check=full ./$NAME &> ./Srcs/Tmp/leaks;
 			LEAKS=$(cat './Srcs/Tmp/leaks' | grep "no leaks are possible");
 		fi
-		if [ -z "$LEAKS" ]; then
+		if test -z "$LEAKS"; then
 			printf "${COLOR_RED_B}❌ KO\n";
 			printf "You have memory leaks.\n";
 			printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
