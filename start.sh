@@ -128,15 +128,6 @@ echo "namespace ft_test $PROTOTYPES_CONTENT" >> $TMP"PROTOTYPES";
 PROTOTYPES="-D PROTOTYPES=\"$TMP"
 PROTOTYPES+='PROTOTYPES"';
 
-LEAKS_COMMAND=$(whereis leakss);
-if [ -z "$LEAKS_COMMAND" ]; then
-	printf "\n${COLOR_RED_B}'leaks' command doesn't found,"
-	printf " so leaks will not be checked. ${COLOR_END}\n"
-	LEAKS_ON=0;
-else
-	LEAKS_ON=1;
-fi
-
 $CPP $CPP_FLAGS $PROTOTYPES -o $RUN_OBJ -c $RUN_SRC;
 
 ################################################################################
@@ -155,6 +146,44 @@ printf "#     42 Yerevan | ft_containers crash test | Author: Volodya Ismailyan 
 printf "#                                                                                      #\n";
 printf "########################################################################################\n\n";
 
+LEAKS_COMMAND=$(whereis leaks);
+if [ -z "$LEAKS_COMMAND" ]; then
+	LEAKS_COMMAND=$(whereis valgrind);
+	if [ -z "$LEAKS_COMMAND" ]; then
+		printf "${COLOR_RED_B}'leaks' or 'valgrind' command doesn't found,"
+		printf " so leaks will not be checked. ${COLOR_END}\n\n"
+		LEAKS_ON=0;
+	else
+		LEAKS_ON=2;
+	fi
+else
+	LEAKS_ON=1;
+fi
+
+if ! test -e "$vector"; then
+	printf "${COLOR_RED_B}Error: Vector: file does not found: $vector.\n";
+	printf "       Correct path in config.sh and try again.\n\n"
+	exit 1;
+else
+	printf "${COLOR_GREEN_B}Vector: file found.\n";
+fi
+
+if ! test -e "$stack"; then
+	printf "${COLOR_RED_B}Error: Stack: file does not found: $stack.\n";
+	printf "       Correct path in config.sh and try again.\n\n"
+	exit 1;
+else
+	printf "${COLOR_GREEN_B}Stack:  file found.\n";
+fi
+
+if ! test -e "$map"; then
+	printf "${COLOR_RED_B}Error: Map: file does not found: $map.\n";
+	printf "       Correct path in config.sh and try again.\n\n"
+	exit 1;
+else
+	printf "${COLOR_GREEN_B}Map:    file found.\n\n";
+fi
+
 ################################################################################
 ################################### VECTOR #####################################
 
@@ -170,7 +199,6 @@ do
 		echo -n " ";
 	fi
 	printf "$N:${COLOR_YELLOW_B} COMPILATION: ${COLOR_END}"
-	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
 	if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
 		printf "${COLOR_RED_B}❌ KO\n";
 		printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
@@ -188,6 +216,7 @@ do
 		rm -rf $TMP $NAME;
 		exit 1;
 	else
+		$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
 		printf "${COLOR_GREEN_B}✅ OK ${COLOR_PURPLE_B}| ${COLOR_END}";
 	fi
 	$CPP $CPP_FLAGS $PROTOTYPES -D LEAKS=$LEAKS_ON -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
@@ -208,9 +237,13 @@ do
 		rm -rf $TMP $NAME;
 		exit 1;
 	fi
-	if [ $LEAKS_ON = "1" ]; then
+	if [ $LEAKS_ON = "1" ] || [ $LEAKS_ON = "2" ]; then
 		printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
-		LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
+		if [ $LEAKS_ON = "1"  ]; then
+			LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
+		else
+			LEAKS=$(cat './Srcs/Tmp/leaks' | grep "no leaks are possible");
+		fi
 		if [ -z "$LEAKS" ]; then
 			printf "${COLOR_RED_B}❌ KO\n";
 			printf "You have memory leaks.\n";
@@ -251,7 +284,6 @@ do
 		echo -n " ";
 	fi
 	printf "$N:${COLOR_YELLOW_B} COMPILATION: ${COLOR_END}"
-	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
 	if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
 		printf "${COLOR_RED_B}❌ KO\n";
 		printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
@@ -269,6 +301,7 @@ do
 		rm -rf $TMP $NAME;
 		exit 1;
 	else
+		$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
 		printf "${COLOR_GREEN_B}✅ OK ${COLOR_PURPLE_B}| ${COLOR_END}";
 	fi
 	$CPP $CPP_FLAGS $PROTOTYPES -D LEAKS=$LEAKS_ON -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
@@ -289,9 +322,13 @@ do
 		rm -rf $TMP $NAME;
 		exit 1;
 	fi
-	if [ $LEAKS_ON = "1" ]; then
+	if [ $LEAKS_ON = "1" ] || [ $LEAKS_ON = "2" ]; then
 		printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
-		LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
+		if [ $LEAKS_ON = "1"  ]; then
+			LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
+		else
+			LEAKS=$(cat './Srcs/Tmp/leaks' | grep "no leaks are possible");
+		fi
 		if [ -z "$LEAKS" ]; then
 			printf "${COLOR_RED_B}❌ KO\n";
 			printf "You have memory leaks.\n";
@@ -331,7 +368,6 @@ do
 		echo -n " ";
 	fi
 	printf "$N:${COLOR_YELLOW_B} COMPILATION: ${COLOR_END}"
-	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
 	if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
 		printf "${COLOR_RED_B}❌ KO\n";
 		printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
@@ -350,6 +386,7 @@ do
 		rm -rf $TMP $NAME;
 		exit 1;
 	else
+		$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
 		printf "${COLOR_GREEN_B}✅ OK ${COLOR_PURPLE_B}| ${COLOR_END}";
 	fi
 	$CPP $CPP_FLAGS $PROTOTYPES -D LEAKS=$LEAKS_ON -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
@@ -371,9 +408,14 @@ do
 		rm -rf $TMP $NAME;
 		exit 1;
 	fi
-	if [ $LEAKS_ON = "1" ]; then
+	if [ $LEAKS_ON = "1" ] || [ $LEAKS_ON = "2" ]; then
 		printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
-		LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
+		printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
+		if [ $LEAKS_ON = "1"  ]; then
+			LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
+		else
+			LEAKS=$(cat './Srcs/Tmp/leaks' | grep "no leaks are possible");
+		fi
 		if [ -z "$LEAKS" ]; then
 			printf "${COLOR_RED_B}❌ KO\n";
 			printf "You have memory leaks.\n";
