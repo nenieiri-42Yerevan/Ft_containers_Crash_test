@@ -128,6 +128,18 @@ echo "namespace ft_test $PROTOTYPES_CONTENT" >> $TMP"PROTOTYPES";
 PROTOTYPES="-D PROTOTYPES=\"$TMP"
 PROTOTYPES+='PROTOTYPES"';
 
+LEAKS_COMMAND=$(whereis leaks);
+if [ -z "$LEAKS_COMMAND" ]; then
+	echo ;
+	printf "${COLOR_RED_B}'leaks' command doesn't found,"
+	printf " so leaks will not be checking. ${COLOR_END}"
+	echo ;
+	echo ;
+	LEAKS_ON=0;
+else
+	LEAKS_ON=1;
+fi
+
 $CPP $CPP_FLAGS $PROTOTYPES -o $RUN_OBJ -c $RUN_SRC;
 
 ###############################################################################
@@ -186,8 +198,37 @@ do
 			cat $F1_SRC;
 			echo ;
 		fi
+		rm -rf $TMP $NAME;
 		exit 1;
 	fi
+	if [ $LEAKS_ON = "1" ]; then
+		printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
+		LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
+		if [ -z "$LEAKS" ]; then
+			printf "${COLOR_RED_B}❌ KO";
+			echo ;
+			printf "You have memory leaks.";
+			echo ;
+			printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}";
+			echo ;
+			printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
+			printf "${COLOR_PURPLE_B}";
+			read -n1 ANSWER;
+			printf "${COLOR_END}";
+			echo ;
+			if [ $ANSWER = "y" ]; then
+				echo ;
+				printf "${COLOR_CYAN}";
+				cat $F1_SRC;
+				echo ;
+			fi
+			rm -rf $TMP $NAME;
+			exit 1;
+		else
+			printf "${COLOR_GREEN_B}✅ OK${COLOR_END}";
+		fi
+	fi
+	echo ;
 done
 echo ;
 

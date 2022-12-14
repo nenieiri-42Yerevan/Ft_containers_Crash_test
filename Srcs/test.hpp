@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 13:29:35 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/13 17:15:59 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:39:16 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # include <map>
 # include <list>
 # include <deque>
+# include <unistd.h>
+# include <fcntl.h>
+# include <cstring>
 
 # ifdef V
 #  include V
