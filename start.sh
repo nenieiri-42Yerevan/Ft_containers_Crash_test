@@ -128,13 +128,10 @@ echo "namespace ft_test $PROTOTYPES_CONTENT" >> $TMP"PROTOTYPES";
 PROTOTYPES="-D PROTOTYPES=\"$TMP"
 PROTOTYPES+='PROTOTYPES"';
 
-LEAKS_COMMAND=$(whereis leaks);
+LEAKS_COMMAND=$(whereis leakss);
 if [ -z "$LEAKS_COMMAND" ]; then
-	echo ;
-	printf "${COLOR_RED_B}'leaks' command doesn't found,"
-	printf " so leaks will not be checking. ${COLOR_END}"
-	echo ;
-	echo ;
+	printf "\n${COLOR_RED_B}'leaks' command doesn't found,"
+	printf " so leaks will not be checked. ${COLOR_END}\n"
 	LEAKS_ON=0;
 else
 	LEAKS_ON=1;
@@ -142,7 +139,23 @@ fi
 
 $CPP $CPP_FLAGS $PROTOTYPES -o $RUN_OBJ -c $RUN_SRC;
 
-###############################################################################
+################################################################################
+################################### INTRO ######################################
+printf "\n${COLOR_BLUE_B}"
+printf "\b########################################################################################\n";
+printf "#                                                                                      #\n";
+printf "#     ░█████╗░██████╗░░█████╗░░██████╗██╗░░██╗  ████████╗███████╗░██████╗████████╗     #\n";
+printf "#     ██╔══██╗██╔══██╗██╔══██╗██╔════╝██║░░██║  ╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝     #\n";
+printf "#     ██║░░╚═╝██████╔╝███████║╚█████╗░███████║  ░░░██║░░░█████╗░░╚█████╗░░░░██║░░░     #\n";
+printf "#     ██║░░██╗██╔══██╗██╔══██║░╚═══██╗██╔══██║  ░░░██║░░░██╔══╝░░░╚═══██╗░░░██║░░░     #\n";
+printf "#     ╚█████╔╝██║░░██║██║░░██║██████╔╝██║░░██║  ░░░██║░░░███████╗██████╔╝░░░██║░░░     #\n";
+printf "#     ░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝  ░░░╚═╝░░░╚══════╝╚═════╝░░░░╚═╝░░░     #\n";
+printf "#                                                                                      #\n";
+printf "#     42 Yerevan | ft_containers crash test | Author: Volodya Ismailyan (vismaily)     #\n";
+printf "#                                                                                      #\n";
+printf "########################################################################################\n\n";
+
+################################################################################
 ################################### VECTOR #####################################
 
 for FUNC in "${VECTOR_FUNCTIONS[@]}"
@@ -159,23 +172,18 @@ do
 	printf "$N:${COLOR_YELLOW_B} COMPILATION: ${COLOR_END}"
 	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
 	if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
-		printf "${COLOR_RED_B}❌ KO";
-		echo ;
-		printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}";
-		echo ;
+		printf "${COLOR_RED_B}❌ KO\n";
+		printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
 		printf "${COLOR_YELLOW_B}Do you want to see compile error output? [y] or [n]: ";
 		printf "${COLOR_PURPLE_B}";
 		read -n1 ANSWER;
-		printf "${COLOR_END}";
-		echo ;
+		printf "${COLOR_END}\n";
 		if [ $ANSWER = "y" ]; then
 			echo ;
-			printf "${COLOR_CYAN_B}#####################################################:"
-			echo ;
+			printf "${COLOR_CYAN_B}\b######################################################\n"
 			printf "${COLOR_CYAN}";
 			cat $TMP"err";
-			printf "${COLOR_CYAN_B}#####################################################:"
-			echo ;
+			printf "${COLOR_CYAN_B}\b######################################################\n"
 		fi
 		rm -rf $TMP $NAME;
 		exit 1;
@@ -190,8 +198,7 @@ do
 		printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
 		printf "${COLOR_PURPLE_B}";
 		read -n1 ANSWER;
-		printf "${COLOR_END}";
-		echo ;
+		printf "${COLOR_END}\n";
 		if [ $ANSWER = "y" ]; then
 			echo ;
 			printf "${COLOR_CYAN}";
@@ -205,12 +212,9 @@ do
 		printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
 		LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
 		if [ -z "$LEAKS" ]; then
-			printf "${COLOR_RED_B}❌ KO";
-			echo ;
-			printf "You have memory leaks.";
-			echo ;
-			printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}";
-			echo ;
+			printf "${COLOR_RED_B}❌ KO\n";
+			printf "You have memory leaks.\n";
+			printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
 			printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
 			printf "${COLOR_PURPLE_B}";
 			read -n1 ANSWER;
@@ -249,23 +253,18 @@ do
 	printf "$N:${COLOR_YELLOW_B} COMPILATION: ${COLOR_END}"
 	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
 	if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
-		printf "${COLOR_RED_B}❌ KO";
-		echo ;
-		printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}";
-		echo ;
+		printf "${COLOR_RED_B}❌ KO\n";
+		printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
 		printf "${COLOR_YELLOW_B}Do you want to see compile error output? [y] or [n]: ";
 		printf "${COLOR_PURPLE_B}";
 		read -n1 ANSWER;
-		printf "${COLOR_END}";
-		echo ;
+		printf "${COLOR_END}\n";
 		if [ $ANSWER = "y" ]; then
 			echo ;
-			printf "${COLOR_CYAN_B}#####################################################:"
-			echo ;
+			printf "${COLOR_CYAN_B}#####################################################:\n"
 			printf "${COLOR_CYAN}";
 			cat $TMP"err";
-			printf "${COLOR_CYAN_B}#####################################################:"
-			echo ;
+			printf "${COLOR_CYAN_B}#####################################################:\n"
 		fi
 		rm -rf $TMP $NAME;
 		exit 1;
@@ -280,8 +279,7 @@ do
 		printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
 		printf "${COLOR_PURPLE_B}";
 		read -n1 ANSWER;
-		printf "${COLOR_END}";
-		echo ;
+		printf "${COLOR_END}\n";
 		if [ $ANSWER = "y" ]; then
 			echo ;
 			printf "${COLOR_CYAN}";
@@ -295,17 +293,13 @@ do
 		printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
 		LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
 		if [ -z "$LEAKS" ]; then
-			printf "${COLOR_RED_B}❌ KO";
-			echo ;
-			printf "You have memory leaks.";
-			echo ;
-			printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}";
-			echo ;
+			printf "${COLOR_RED_B}❌ KO\n";
+			printf "You have memory leaks.\n";
+			printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
 			printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
 			printf "${COLOR_PURPLE_B}";
 			read -n1 ANSWER;
-			printf "${COLOR_END}";
-			echo ;
+			printf "${COLOR_END}\n";
 			if [ $ANSWER = "y" ]; then
 				echo ;
 				printf "${COLOR_CYAN}";
@@ -339,10 +333,8 @@ do
 	printf "$N:${COLOR_YELLOW_B} COMPILATION: ${COLOR_END}"
 	$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
 	if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
-		printf "${COLOR_RED_B}❌ KO";
-		echo ;
-		printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}";
-		echo ;
+		printf "${COLOR_RED_B}❌ KO\n";
+		printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
 		printf "${COLOR_YELLOW_B}Do you want to see compile error output? [y] or [n]: ";
 		printf "${COLOR_PURPLE_B}";
 		read -n1 ANSWER;
@@ -350,12 +342,10 @@ do
 		echo ;
 		if [ $ANSWER = "y" ]; then
 			echo ;
-			printf "${COLOR_CYAN_B}#####################################################:"
-			echo ;
+			printf "${COLOR_CYAN_B}#####################################################:\n"
 			printf "${COLOR_CYAN}";
 			cat $TMP"err";
-			printf "${COLOR_CYAN_B}#####################################################:"
-			echo ;
+			printf "${COLOR_CYAN_B}#####################################################:\n"
 		fi
 		rm -rf $TMP $NAME;
 		exit 1;
@@ -385,17 +375,13 @@ do
 		printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
 		LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
 		if [ -z "$LEAKS" ]; then
-			printf "${COLOR_RED_B}❌ KO";
-			echo ;
-			printf "You have memory leaks.";
-			echo ;
-			printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}";
-			echo ;
+			printf "${COLOR_RED_B}❌ KO\n";
+			printf "You have memory leaks.\n";
+			printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
 			printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
 			printf "${COLOR_PURPLE_B}";
 			read -n1 ANSWER;
-			printf "${COLOR_END}";
-			echo ;
+			printf "${COLOR_END}\n";
 			if [ $ANSWER = "y" ]; then
 				echo ;
 				printf "${COLOR_CYAN}";
@@ -414,5 +400,6 @@ done
 ###############################################################################
 
 rm -rf $TMP $NAME;
+printf "\n${COLOR_YELLOW_B}Good job, babe.${COLOR_END}\n\n"
 
 exit 0;
