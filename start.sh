@@ -295,14 +295,13 @@ if ! test -z "$vector"; then
 			rm -rf $TMP $NAME;
 			exit 1;
 		fi
-	#	echo "valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
 		if [ $LEAKS_ON = "1" ] || [ $LEAKS_ON = "2" ]; then
 			printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
 			if [ $LEAKS_ON = "1"  ]; then
-				LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
+				LEAKS=$(cat "$TMP"leaks | grep "0 leak");
 			else
-				valgrind --leak-check=full ./$NAME &> ./Srcs/Tmp/leaks;
-				LEAKS=$(cat './Srcs/Tmp/leaks' | grep "no leaks are possible");
+				valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
+				LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
 			fi
 			if test -z "$LEAKS"; then
 				printf "${COLOR_RED_B}❌ KO\n";
@@ -389,9 +388,10 @@ if ! test -z "$stack"; then
 		if [ $LEAKS_ON = "1" ] || [ $LEAKS_ON = "2" ]; then
 			printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
 			if [ $LEAKS_ON = "1"  ]; then
-				LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
+				LEAKS=$(cat "$TMP"leaks | grep "0 leak");
 			else
-				LEAKS=$(cat './Srcs/Tmp/leaks' | grep "no leaks are possible");
+				valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
+				LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
 			fi
 			if [ -z "$LEAKS" ]; then
 				printf "${COLOR_RED_B}❌ KO\n";
@@ -478,11 +478,11 @@ if ! test -z "$map"; then
 		fi
 		if [ $LEAKS_ON = "1" ] || [ $LEAKS_ON = "2" ]; then
 			printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
-			printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
 			if [ $LEAKS_ON = "1"  ]; then
-				LEAKS=$(cat './Srcs/Tmp/leaks' | grep "0 leak");
+				LEAKS=$(cat "$TMP"leaks | grep "0 leak");
 			else
-				LEAKS=$(cat './Srcs/Tmp/leaks' | grep "no leaks are possible");
+				valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
+				LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
 			fi
 			if [ -z "$LEAKS" ]; then
 				printf "${COLOR_RED_B}❌ KO\n";
