@@ -19,20 +19,37 @@ COLOR_END='\033[0m';
 CPP='c++';
 CPP_FLAGS='-Wall -Wextra -Werror -I./Srcs -I./';
 
+VECTOR_ON=0;
+STACK_ON=0;
+MAP_ON=0;
+
+if [ $# -eq 0 ]; then
+	VECTOR_ON=1;
+	STACK_ON=2;
+	MAP_ON=3;
+fi
+
 for flag in "$@"
 do
     case "${flag}" in
         "-v")
-			stack="";
-			map="";;
+			VECTOR_ON=1;;
         "-st")
-			vector="";
-			map="";;
+			STACK_ON=1;;
         "-m")
-			vector="";
-			stack="";;
+			MAP_ON=1;;
     esac
 done
+
+if [ $VECTOR_ON = "0" ]; then
+	vector="";
+fi
+if [ $STACK_ON = "0" ]; then
+	stack="";
+fi
+if [ $MAP_ON = "0" ]; then
+	map="";
+fi
 
 if ! test -z "$vector"; then
 	V_DEF="-D V=\"$vector\""
