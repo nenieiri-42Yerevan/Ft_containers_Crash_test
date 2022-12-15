@@ -197,8 +197,8 @@ LEAKS_COMMAND=$(which leaks);
 if [ -z "$LEAKS_COMMAND" ]; then
 	LEAKS_COMMAND=$(which valgrind);
 	if [ -z "$LEAKS_COMMAND" ]; then
-		printf "${COLOR_RED_B}'leaks' or 'valgrind' command doesn't found,"
-		printf " so leaks will not be checked. ${COLOR_END}\n\n"
+		printf "\n${COLOR_RED_B}'leaks' or 'valgrind' command doesn't found,"
+		printf " so leaks will not be checked. ${COLOR_END}\n"
 		LEAKS_ON=0;
 	else
 		LEAKS_ON=2;
