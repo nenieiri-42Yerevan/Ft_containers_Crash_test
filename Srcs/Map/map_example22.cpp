@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:32:11 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 18:11:46 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/15 14:18:53 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ namespace	NS_TEST
 	{
 		std::ostringstream	ss;
 
-		NS::vector<int> v;
+		std::vector<int> v;
 		NS::map<int, int, std::greater<int> > mp2;
 		mp2.insert(NS::make_pair(20, 20));
 		mp2.insert(NS::make_pair(30, 30));
@@ -36,7 +36,7 @@ namespace	NS_TEST
 			else
 				v.push_back(it->first);
 		}
-		for (NS::vector<int>::iterator it1 = v.begin(); it1 != v.end(); ++it1)
+		for (std::vector<int>::iterator it1 = v.begin(); it1 != v.end(); ++it1)
 			ss << " " << *it1;
 		return (ss.str());
 	}

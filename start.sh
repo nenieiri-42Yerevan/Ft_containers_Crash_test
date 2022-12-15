@@ -25,6 +25,9 @@ do
         "-v")
 			stack="";
 			map="";;
+        "-st")
+			vector="";
+			map="";;
         "-m")
 			vector="";
 			stack="";;
@@ -40,7 +43,7 @@ fi
 if ! test -z "$map"; then
 	M_DEF="-D M=\"$map\""
 fi
-if $(test -z "$vector") && $(test -z "$vector") && $(test -z "$vector"); then
+if $(test -z "$vector") && $(test -z "$stack") && $(test -z "$map"); then
 	printf "${COLOR_YELLOW_B}Nothing to do.${COLOR_END}\n"
 	exit 0;
 fi
@@ -171,7 +174,7 @@ printf "#   ░╚════╝░╚═╝░░╚═╝╚═╝░░╚�
 printf "#                                                                                  #\n";
 printf "#   42 Yerevan | ft_containers crash test | Author: Volodya Ismailyan (vismaily)   #\n";
 printf "#                                                                                  #\n";
-printf "####################################################################################\n\n";
+printf "####################################################################################\n";
 
 LEAKS_COMMAND=$(which leaks);
 if [ -z "$LEAKS_COMMAND" ]; then
@@ -190,30 +193,30 @@ fi
 if ! test -z "$vector"; then
 	if ! test -e "$vector"; then
 		printf "${COLOR_RED_B}Error: Vector: file does not found: $vector.\n";
-		printf "       Correct path in config.sh and try again.\n\n"
+		printf "       Correct path in config.sh and try again.\n"
 		exit 1;
 	else
-		printf "${COLOR_GREEN_B}Vector: file found.\n";
+		printf "\n${COLOR_GREEN_B}Vector: file found.";
 	fi
 fi
 
 if ! test -z "$stack"; then
 	if ! test -e "$stack"; then
 		printf "${COLOR_RED_B}Error: Stack: file does not found: $stack.\n";
-		printf "       Correct path in config.sh and try again.\n\n"
+		printf "       Correct path in config.sh and try again.\n"
 		exit 1;
 	else
-		printf "${COLOR_GREEN_B}Stack:  file found.\n";
+		printf "\n${COLOR_GREEN_B}Stack:  file found.";
 	fi
 fi
 
 if ! test -z "$map"; then
 	if ! test -e "$map"; then
 		printf "${COLOR_RED_B}Error: Map: file does not found: $map.\n";
-		printf "       Correct path in config.sh and try again.\n\n"
+		printf "       Correct path in config.sh and try again.\n"
 		exit 1;
 	else
-		printf "${COLOR_GREEN_B}Map:    file found.\n\n";
+		printf "\n${COLOR_GREEN_B}Map:    file found.";
 	fi
 fi
 
@@ -221,10 +224,10 @@ fi
 ################################### VECTOR #####################################
 
 if ! test -z "$vector"; then
-	printf "${COLOR_BLUE_B}"
+	printf "\n\n${COLOR_BLUE_B}"
 	printf "\b####################################################################################\n";
 	printf "#                                      VECTOR                                      #\n";
-	printf "####################################################################################\n\n";
+	printf "####################################################################################\n";
 	for FUNC in "${VECTOR_FUNCTIONS[@]}"
 	do
 		F1_SRC=$VECTOR"$FUNC".cpp;
@@ -232,7 +235,7 @@ if ! test -z "$vector"; then
 		F1_OBJ_FT=$TMP"$FUNC"_ft.o;
 
 		N=${FUNC:11}
-		printf "${COLOR_PURPLE_B}Case ";
+		printf "\n${COLOR_PURPLE_B}Case ";
 		if (($N < 10)); then
 			echo -n " ";
 		fi
@@ -305,19 +308,17 @@ if ! test -z "$vector"; then
 				printf "${COLOR_GREEN_B}✅ OK${COLOR_END}";
 			fi
 		fi
-		echo ;
 	done
-	echo ;
 fi
 
 ###############################################################################
 #################################### STACK #####################################
 
 if ! test -z "$stack"; then
-	printf "${COLOR_BLUE_B}"
+	printf "\n\n${COLOR_BLUE_B}"
 	printf "\b####################################################################################\n";
 	printf "#                                      STACK                                       #\n";
-	printf "####################################################################################\n\n";
+	printf "####################################################################################\n";
 	for FUNC in "${STACK_FUNCTIONS[@]}"
 	do
 		F1_SRC=$STACK"$FUNC".cpp;
@@ -325,7 +326,7 @@ if ! test -z "$stack"; then
 		F1_OBJ_FT=$TMP"$FUNC"_ft.o;
 
 		N=${FUNC:13}
-		printf "${COLOR_PURPLE_B}Case ";
+		printf "\n${COLOR_PURPLE_B}Case ";
 		if (($N < 10)); then
 			echo -n " ";
 		fi
@@ -395,19 +396,17 @@ if ! test -z "$stack"; then
 				printf "${COLOR_GREEN_B}✅ OK${COLOR_END}";
 			fi
 		fi
-		echo ;
 	done
-	echo ;
 fi
 
 ###############################################################################
 ##################################### MAP ######################################
 
 if ! test -z "$map"; then
-	printf "${COLOR_BLUE_B}"
+	printf "\n\n${COLOR_BLUE_B}"
 	printf "\b####################################################################################\n";
 	printf "#                                       MAP                                        #\n";
-	printf "####################################################################################\n\n";
+	printf "####################################################################################\n";
 	for FUNC in "${MAP_FUNCTIONS[@]}"
 	do
 		F1_SRC=$MAP"$FUNC".cpp;
@@ -415,7 +414,7 @@ if ! test -z "$map"; then
 		F1_OBJ_FT=$TMP"$FUNC"_ft.o;
 
 		N=${FUNC:11}
-		printf "${COLOR_PURPLE_B}Case ";
+		printf "\n${COLOR_PURPLE_B}Case ";
 		if (($N < 10)); then
 			echo -n " ";
 		fi
@@ -488,13 +487,12 @@ if ! test -z "$map"; then
 				printf "${COLOR_GREEN_B}✅ OK${COLOR_END}";
 			fi
 		fi
-		echo ;
 	done
 fi
 
 ###############################################################################
 
 rm -rf $TMP $NAME;
-printf "\n${COLOR_YELLOW_B}Good job, babe.${COLOR_END}\n\n"
+printf "\n\n${COLOR_YELLOW_B}Good job, babe.${COLOR_END}\n\n"
 
 exit 0;
