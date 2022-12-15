@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 12:20:25 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/14 14:53:22 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/15 13:51:51 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	run(int num, const std::string (*f1)(), const std::string (*f2)())
 	str1 = (*f1)();
 	str2 = (*f2)();
 
-	std::cout << COLOR_YELLOW_B << "RETURN & OUTPUT: ";
+	std::cout << COLOR_YELLOW_B << "TEST: ";
 	if (str1 == str2)
 		std::cout << COLOR_GREEN_B << "✅ OK" << COLOR_END;
 	else
