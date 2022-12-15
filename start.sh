@@ -34,7 +34,7 @@ do
     case "${flag}" in
         "-v")
 			VECTOR_ON=1;;
-        "-st")
+        "-s")
 			STACK_ON=1;;
         "-m")
 			MAP_ON=1;;
@@ -77,38 +77,39 @@ TMP=$SRCS"Tmp/";
 
 VECTOR=$SRCS"Vector/";
 VECTOR_FUNCTIONS=(
-					"vec_example1"
-					"vec_example2"
-					"vec_example3"
-					"vec_example4"
-					"vec_example5"
-					"vec_example6"
-					"vec_example7"
-					"vec_example8"
-					"vec_example9"
-					"vec_example10"
-					"vec_example11"
-					"vec_example12"
-					"vec_example13"
-					"vec_example14"
-					"vec_example15"
-					"vec_example16"
-					"vec_example17"
-					"vec_example18"
-					"vec_example19"
-					"vec_example20"
-					"vec_example21"
-					"vec_example22"
-					"vec_example23"
-					"vec_example24"
-					"vec_example25"
-					"vec_example26"
-					"vec_example27"
+#					"vec_example1"
+#					"vec_example2"
+#					"vec_example3"
+#					"vec_example4"
+#					"vec_example5"
+#					"vec_example6"
+#					"vec_example7"
+#					"vec_example8"
+#					"vec_example9"
+#					"vec_example10"
+#					"vec_example11"
+#					"vec_example12"
+#					"vec_example13"
+#					"vec_example14"
+#					"vec_example15"
+#					"vec_example16"
+#					"vec_example17"
+#					"vec_example18"
+#					"vec_example19"
+#					"vec_example20"
+#					"vec_example21"
+#					"vec_example22"
+#					"vec_example23"
+#					"vec_example24"
+#					"vec_example25"
+#					"vec_example26"
+#					"vec_example27"
+					"vec_example28"
 				 );
 
 for FUNC in "${VECTOR_FUNCTIONS[@]}"
 do
-	VECT_PROTOTYPES+="const std::string $FUNC(); ";
+	VECT_PROTOTYPES+="const std::string $FUNC(double &_time); ";
 done
 
 ################################################################################
@@ -122,7 +123,7 @@ STACK_FUNCTIONS=(
 
 for FUNC in "${STACK_FUNCTIONS[@]}"
 do
-	STACK_PROTOTYPES+="const std::string $FUNC(); ";
+	STACK_PROTOTYPES+="const std::string $FUNC(double &_time); ";
 done
 
 ###############################################################################
@@ -156,7 +157,7 @@ MAP_FUNCTIONS=(
 
 for FUNC in "${MAP_FUNCTIONS[@]}"
 do
-	MAP_PROTOTYPES+="const std::string $FUNC(); ";
+	MAP_PROTOTYPES+="const std::string $FUNC(double &_time); ";
 done
 
 ###############################################################################

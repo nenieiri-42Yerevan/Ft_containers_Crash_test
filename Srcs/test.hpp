@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 13:29:35 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/14 19:23:29 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:10:12 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include <fcntl.h>
 # include <cstring>
 # include <sys/wait.h>
+# include <sys/time.h>
 
 # ifdef V
 #  include V
@@ -54,6 +55,6 @@
 
 # include PROTOTYPES
 
-void	run(int num, const std::string (*f1)(), const std::string (*f2)());
+void	run(int num, const std::string (*f1)(double &), const std::string (*f2)(double &));
 
 #endif

@@ -6,21 +6,25 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 12:20:25 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/15 13:51:51 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:19:18 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.hpp"
 
-void	run(int num, const std::string (*f1)(), const std::string (*f2)())
+void	run(int num, const std::string (*f1)(double &), const std::string (*f2)(double &))
 {
 	std::ostringstream	ss;
 	std::string			str1;
 	std::string			str2;
 	char				diff;
+	double				_time;
 
-	str1 = (*f1)();
-	str2 = (*f2)();
+	_time = 0;
+	str1 = (*f1)(_time);
+	std::cout << std::endl << _time << std::endl;
+	str2 = (*f2)(_time);
+	std::cout << std::endl << _time << std::endl;
 
 	std::cout << COLOR_YELLOW_B << "TEST: ";
 	if (str1 == str2)
