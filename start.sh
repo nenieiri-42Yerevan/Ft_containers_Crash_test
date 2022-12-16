@@ -77,33 +77,33 @@ TMP=$SRCS"Tmp/";
 
 VECTOR=$SRCS"Vector/";
 VECTOR_FUNCTIONS=(
-#					"vec_example1"
-#					"vec_example2"
-#					"vec_example3"
-#					"vec_example4"
-#					"vec_example5"
-#					"vec_example6"
-#					"vec_example7"
-#					"vec_example8"
-#					"vec_example9"
-#					"vec_example10"
-#					"vec_example11"
-#					"vec_example12"
-#					"vec_example13"
-#					"vec_example14"
-#					"vec_example15"
-#					"vec_example16"
-#					"vec_example17"
-#					"vec_example18"
-#					"vec_example19"
-#					"vec_example20"
-#					"vec_example21"
-#					"vec_example22"
-#					"vec_example23"
-#					"vec_example24"
-#					"vec_example25"
-#					"vec_example26"
-#					"vec_example27"
+					"vec_example1"
+					"vec_example2"
+					"vec_example3"
+					"vec_example4"
+					"vec_example5"
+					"vec_example6"
+					"vec_example7"
+					"vec_example8"
+					"vec_example9"
+					"vec_example10"
+					"vec_example11"
+					"vec_example12"
+					"vec_example13"
+					"vec_example14"
+					"vec_example15"
+					"vec_example16"
+					"vec_example17"
+					"vec_example18"
+					"vec_example19"
+					"vec_example20"
+					"vec_example21"
+					"vec_example22"
+					"vec_example23"
+					"vec_example24"
+					"vec_example25"
+					"vec_example26"
+					"vec_example27"
 					"vec_example28"
 				 );
 
@@ -289,7 +289,7 @@ if ! test -z "$vector"; then
 			printf "${COLOR_END}\n";
 			if [ $ANSWER = "y" ]; then
 				echo ;
-				printf "${COLOR_CYAN}";
+				printf "${COLOR_CYAN}\b";
 				cat $F1_SRC;
 				echo ;
 			fi
@@ -404,7 +404,7 @@ if ! test -z "$stack"; then
 				printf "${COLOR_END}\n";
 				if [ $ANSWER = "y" ]; then
 					echo ;
-					printf "${COLOR_CYAN}";
+					printf "${COLOR_CYAN}\b";
 					cat $F1_SRC;
 					echo ;
 				fi
@@ -470,7 +470,7 @@ if ! test -z "$map"; then
 			echo ;
 			if [ $ANSWER = "y" ]; then
 				echo ;
-				printf "${COLOR_CYAN}";
+				printf "${COLOR_CYAN}\b";
 				cat $F1_SRC;
 				echo ;
 			fi

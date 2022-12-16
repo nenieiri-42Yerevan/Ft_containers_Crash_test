@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:28:03 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 16:28:14 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:27:46 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 namespace	NS_TEST
 {
-	const std::string	map_example10()
+	const std::string	map_example10(double &_time)
 	{
 		std::ostringstream	ss;
 
@@ -38,6 +38,7 @@ namespace	NS_TEST
 		NS::map<char, int>::key_compare	key_cmp = A.key_comp();
 		ss << " " << key_cmp('a', 'b');
 		ss << " " << key_cmp('a', 'a');
+		_time = 0;
 		return (ss.str());
 	}
 }

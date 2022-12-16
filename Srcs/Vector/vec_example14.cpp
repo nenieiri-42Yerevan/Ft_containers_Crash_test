@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:03:06 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 14:26:46 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:16:26 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 namespace	NS_TEST
 {
-	const std::string	vec_example14()
+	const std::string	vec_example14(double &_time)
 	{
 		std::ostringstream	ss;
 
@@ -41,6 +41,7 @@ namespace	NS_TEST
 			ss << ' ' << vec[i];
 		ss << " " << vec.capacity();
 		ss << " " << vec.size();
+		_time = 0;
 		return (ss.str());
 	}
 }

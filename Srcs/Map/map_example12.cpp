@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:28:38 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 16:28:50 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:28:30 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 namespace	NS_TEST
 {
-	const std::string	map_example12()
+	const std::string	map_example12(double &_time)
 	{
 		std::ostringstream	ss;
 
@@ -34,6 +34,7 @@ namespace	NS_TEST
 		NS::map<char, int>::const_iterator	it2 = A.find('o');
 		while (it1 != it2)
 			ss << " " << (it1++)->first;
+		_time = 0;
 		return (ss.str());
 	}
 }

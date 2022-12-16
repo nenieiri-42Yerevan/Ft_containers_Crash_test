@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:31:55 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/12 16:32:03 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:31:23 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 namespace	NS_TEST
 {
-	const std::string	map_example21()
+	const std::string	map_example21(double &_time)
 	{
 		unsigned int 		lst_size = 6;
 		std::ostringstream	ss;
@@ -45,6 +45,7 @@ namespace	NS_TEST
 		mp.erase(1);
 		for (NS::map<const int, std::string>::iterator it = mp.begin(); it != mp.end(); ++it)
 			ss << " " << it->first;
+		_time = 0;
 		return (ss.str());
 	}
 }
