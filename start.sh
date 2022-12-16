@@ -131,28 +131,29 @@ done
 
 MAP=$SRCS"Map/";
 MAP_FUNCTIONS=(
-				"map_example1"
-				"map_example2"
-				"map_example3"
-				"map_example4"
-				"map_example5"
-				"map_example6"
-				"map_example7"
-				"map_example8"
-				"map_example9"
-				"map_example10"
-				"map_example11"
-				"map_example12"
-				"map_example13"
-				"map_example14"
-				"map_example15"
-				"map_example16"
-				"map_example17"
-				"map_example18"
-				"map_example19"
-				"map_example20"
-				"map_example21"
-				"map_example22"
+#				"map_example1"
+#				"map_example2"
+#				"map_example3"
+#				"map_example4"
+#				"map_example5"
+#				"map_example6"
+#				"map_example7"
+#				"map_example8"
+#				"map_example9"
+#				"map_example10"
+#				"map_example11"
+#				"map_example12"
+#				"map_example13"
+#				"map_example14"
+#				"map_example15"
+#				"map_example16"
+#				"map_example17"
+#				"map_example18"
+#				"map_example19"
+#				"map_example20"
+#				"map_example21"
+#				"map_example22"
+				"map_example23"
 			  );
 
 for FUNC in "${MAP_FUNCTIONS[@]}"
@@ -276,7 +277,7 @@ if ! test -z "$vector"; then
 			exit 1;
 		else
 			$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
-			printf "${COLOR_GREEN_B}✅ OK ${COLOR_PURPLE_B}| ${COLOR_END}";
+			printf "${COLOR_GREEN_B}✅ OK ";
 		fi
 		$CPP $CPP_FLAGS $PROTOTYPES -D LEAKS=$LEAKS_ON -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
 
@@ -366,7 +367,7 @@ if ! test -z "$stack"; then
 			exit 1;
 		else
 			$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
-			printf "${COLOR_GREEN_B}✅ OK ${COLOR_PURPLE_B}| ${COLOR_END}";
+			printf "${COLOR_GREEN_B}✅ OK ";
 		fi
 		$CPP $CPP_FLAGS $PROTOTYPES -D LEAKS=$LEAKS_ON -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
 
@@ -456,7 +457,7 @@ if ! test -z "$map"; then
 			exit 1;
 		else
 			$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
-			printf "${COLOR_GREEN_B}✅ OK ${COLOR_PURPLE_B}| ${COLOR_END}";
+			printf "${COLOR_GREEN_B}✅ OK ";
 		fi
 		$CPP $CPP_FLAGS $PROTOTYPES -D LEAKS=$LEAKS_ON -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
 
