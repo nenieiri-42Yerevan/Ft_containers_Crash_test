@@ -81,7 +81,7 @@ VECTOR_FUNCTIONS=(
 					"vec_example2"
 					"vec_example3"
 					"vec_example4"
-					"vec_example5"
+#					"vec_example5"
 					"vec_example6"
 					"vec_example7"
 					"vec_example8"
@@ -153,7 +153,13 @@ MAP_FUNCTIONS=(
 #				"map_example20"
 #				"map_example21"
 #				"map_example22"
-				"map_example23"
+#				"map_example23"
+#				"map_example24"
+#				"map_example25"
+#				"map_example26"
+#				"map_example27"
+				"map_example28"
+				"map_example29"
 			  );
 
 for FUNC in "${MAP_FUNCTIONS[@]}"

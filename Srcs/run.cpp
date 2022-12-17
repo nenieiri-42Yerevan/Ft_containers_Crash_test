@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 12:20:25 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/16 17:21:41 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/17 13:13:16 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	run(int num, const std::string (*f1)(double &), const std::string (*f2)(dou
 	str1 = (*f1)(time1);
 	alarm_sec = (time1 * 30) * 1e-6;
 
-	/* check for time and segfaults */
+	/*--------------------- check for time and segfaults ---------------------*/
 	int p = fork();
 	if (p == -1)
 	{
@@ -86,7 +86,8 @@ void	run(int num, const std::string (*f1)(double &), const std::string (*f2)(dou
 		std::cout << COLOR_END;
 		exit(1);
 	}
-	/* --------------------------------------------------------------- */
+	/* ---------------------------------------------------------------------- */
+	/* ----------------------------- Main part ------------------------------ */
 
 	str2 = (*f2)(time2);
 	time2 /= 20;
