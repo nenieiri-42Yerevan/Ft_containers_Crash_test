@@ -165,8 +165,13 @@ MAP_FUNCTIONS=(
 #				"map_example32"
 #				"map_example33"
 #				"map_example34"
-				"map_example35"
-				"map_example36"
+#				"map_example35"
+#				"map_example36"
+#				"map_example37"
+#				"map_example38"
+#				"map_example39"
+				"map_example40"
+				"map_example41"
 			  );
 
 for FUNC in "${MAP_FUNCTIONS[@]}"
