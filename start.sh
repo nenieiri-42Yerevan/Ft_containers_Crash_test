@@ -312,11 +312,10 @@ if ! test -z "$vector"; then
 				printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
 				printf "${COLOR_PURPLE_B}";
 				read -n1 ANSWER;
-				printf "${COLOR_END}";
-				echo ;
+				printf "${COLOR_END}\n";
 				if [ $ANSWER = "y" ]; then
 					echo ;
-					printf "${COLOR_CYAN}";
+					printf "${COLOR_CYAN}\b";
 					cat $F1_SRC;
 					echo ;
 				fi
@@ -380,7 +379,7 @@ if ! test -z "$stack"; then
 			printf "${COLOR_END}\n";
 			if [ $ANSWER = "y" ]; then
 				echo ;
-				printf "${COLOR_CYAN}";
+				printf "${COLOR_CYAN}\b";
 				cat $F1_SRC;
 				echo ;
 			fi
@@ -395,7 +394,7 @@ if ! test -z "$stack"; then
 				valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
 				LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
 			fi
-			if [ -z "$LEAKS" ]; then
+			if test -z "$LEAKS"; then
 				printf "${COLOR_RED_B}❌ KO\n";
 				printf "You have memory leaks.\n";
 				printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
@@ -467,8 +466,7 @@ if ! test -z "$map"; then
 			printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
 			printf "${COLOR_PURPLE_B}";
 			read -n1 ANSWER;
-			printf "${COLOR_END}";
-			echo ;
+			printf "${COLOR_END}\n";
 			if [ $ANSWER = "y" ]; then
 				echo ;
 				printf "${COLOR_CYAN}\b";
@@ -486,7 +484,7 @@ if ! test -z "$map"; then
 				valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
 				LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
 			fi
-			if [ -z "$LEAKS" ]; then
+			if test -z "$LEAKS"; then
 				printf "${COLOR_RED_B}❌ KO\n";
 				printf "You have memory leaks.\n";
 				printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
@@ -496,7 +494,7 @@ if ! test -z "$map"; then
 				printf "${COLOR_END}\n";
 				if [ $ANSWER = "y" ]; then
 					echo ;
-					printf "${COLOR_CYAN}";
+					printf "${COLOR_CYAN}\b";
 					cat $F1_SRC;
 					echo ;
 				fi
