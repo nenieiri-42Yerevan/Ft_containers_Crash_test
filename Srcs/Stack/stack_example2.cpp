@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:53:55 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/16 13:23:16 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/18 16:49:07 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ namespace	NS_TEST
 		st2.pop();
 		st2 = st;
 		ss << " " << st2.top() << " " << st2.size();
+
 		_time = 0;
 		return (ss.str());
 	}

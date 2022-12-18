@@ -1,47 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_exmaple1.cpp                                 :+:      :+:    :+:   */
+/*   stack_exmaple4.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:53:36 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/18 16:48:58 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/18 17:18:37 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Example 1 */
-/* Example for constructor without parametrs */
-/* Example for size and push_back */
+/* Example 4 */
+/* empty() */
 
 #include "test.hpp"
 
 namespace	NS_TEST
 {
-	const std::string	stack_example1(double &_time)
+	const std::string	stack_example4(double &_time)
 	{
 		std::ostringstream	ss;
+		clock_t			  	start;
+		clock_t			  	end;
+		NS::stack<int>		stk;
 
-		NS::stack<int, NS::vector<int> >	st;
-		ss << " " << st.size();
-		st.push(42);
-		ss << " " << st.top();
-		ss << " " << st.size();
-		st.push(84);
-		ss << " " << st.top();
-		ss << " " << st.size();
-		st.push(168);
-		ss << " " << st.top();
-		ss << " " << st.size();
-		st.push(336);
-		st.push(672);
-		ss << " " << st.top();
-		st.pop();
-		ss << " " << st.top();
-		ss << " " << st.empty();
-		ss << " " << st.size();
+		for (int i = 0; i < 2000000; ++i)
+			stk.push(i);
+		ss << " " << stk.empty();
+		while (stk.size() > 0)
+			stk.pop();
 
-		_time = 0;
+		start = clock();
+		ss << " " << stk.empty();
+		end = clock();
+		_time = (double)(end - start);
+
 		return (ss.str());
 	}
 }

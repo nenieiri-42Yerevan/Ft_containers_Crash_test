@@ -119,6 +119,18 @@ STACK=$SRCS"Stack/";
 STACK_FUNCTIONS=(
 					"stack_example1"
 					"stack_example2"
+					"stack_example3"
+					"stack_example4"
+					"stack_example5"
+					"stack_example6"
+					"stack_example7"
+					"stack_example8"
+					"stack_example9"
+					"stack_example10"
+					"stack_example11"
+					"stack_example12"
+					"stack_example13"
+					"stack_example14"
 				);
 
 for FUNC in "${STACK_FUNCTIONS[@]}"
