@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:24:35 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/17 17:00:18 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/18 13:19:04 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ namespace	NS_TEST
 	const std::string	map_example38(double &_time)
 	{
 		std::ostringstream	ss;
-		struct timeval		start;
-		struct timeval		end;
+		clock_t				start;
+		clock_t				end;
 		NS::map<int, int>	mp;
 
 		NS::map<int, int> mpp;
@@ -49,7 +49,7 @@ namespace	NS_TEST
 		NS::map<int, int>::iterator it = mp.begin();
 		NS::map<int, int>::iterator it2 = mp.end();
 
-		gettimeofday(&start, NULL);
+		start = clock();
 		ss << " " << it->first;
 		it++;
 		it++;
@@ -66,9 +66,8 @@ namespace	NS_TEST
 		ss << " " << (it2--)->first;
 		ss << " " << (it2++)->first;
 		ss << " " << (++it2)->first;
-		gettimeofday(&end, NULL);
-		_time = (end.tv_sec - start.tv_sec) * 1e6;
-		_time = (_time + (end.tv_usec - start.tv_usec));
+		end = clock();
+		_time = (double)(end - start);
 
 		return (ss.str());
 	}

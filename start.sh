@@ -172,6 +172,8 @@ MAP_FUNCTIONS=(
 #				"map_example39"
 				"map_example40"
 				"map_example41"
+#				"map_example42"
+				"map_example43"
 			  );
 
 for FUNC in "${MAP_FUNCTIONS[@]}"

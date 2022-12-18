@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 12:20:25 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/17 17:47:29 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:10:47 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	run(int num, const std::string (*f1)(double &), const std::string (*f2)(dou
 	time1 = 0;
 	time2 = 0;
 	str1 = (*f1)(time1);
-	alarm_sec = (time1 * 30) * 1e-6;
+	time1 /= CLOCKS_PER_SEC;
+	alarm_sec = ((int)time1 == 0) ? 10 : (int)(time1 * 30);
 
 	/*--------------------- check for time and segfaults ---------------------*/
 	int p = fork();
@@ -77,9 +78,8 @@ void	run(int num, const std::string (*f1)(double &), const std::string (*f2)(dou
 		} while (diff != 'y' && diff != 'n');
 		if (diff == 'y')
 		{
-			std::cout << std::setprecision(2);
 			std::cout << COLOR_GREEN_B << "std -> " << std::left << std::fixed;
-			std::cout << std::setw(4) << (time1 * 1e-3) << " ms" << std::endl;
+			std::cout << (time1 / 1000) << " ms" << std::endl;
 			std::cout << COLOR_RED_B << "ft  -> too long";
 			std::cout << COLOR_END << std::endl;
 		}
@@ -90,7 +90,7 @@ void	run(int num, const std::string (*f1)(double &), const std::string (*f2)(dou
 	/* ----------------------------- Main part ------------------------------ */
 
 	str2 = (*f2)(time2);
-	time2 /= 20;
+	time2 /= CLOCKS_PER_SEC;
 
 	if (str1 == str2)
 	{
@@ -123,10 +123,13 @@ void	run(int num, const std::string (*f1)(double &), const std::string (*f2)(dou
 		exit(1);
 	}
 	std::cout << COLOR_YELLOW_B << "TIME: " << std::flush;
-	if ((time2 < time1) || (time2 == 0))
+	if (((time2 / time1) <= 20) || (time2 == 0))
 		std::cout << COLOR_GREEN_B << "✅ OK" << COLOR_END;
 	else
 	{
+		std::cout << std::endl << "AAA " << std::fixed << (time1) << std::endl;
+		std::cout << "AAA " << std::fixed << (time2) << std::endl;
+
 		std::cout << COLOR_RED_B << "❌ KO (TIMEOUT)" << std::endl << COLOR_END;
 		std::cout << COLOR_RED_B << "Your grade is 0/100. Fix mistake and try again!!!";
 		std::cout << std::endl << COLOR_END;
@@ -144,12 +147,11 @@ void	run(int num, const std::string (*f1)(double &), const std::string (*f2)(dou
 		} while (diff != 'y' && diff != 'n');
 		if (diff == 'y')
 		{
-			std::cout << std::setprecision(2);
 			std::cout << COLOR_GREEN_B << "std -> " << std::left << std::fixed;
-			std::cout << std::setw(4) << (time1 * 1e-3) << " ms" << std::endl;
+			std::cout << (time1 / 1000) << " ms" << std::endl;
 			std::cout << COLOR_RED_B << "ft  -> ";
-			std::cout << std::left << std::fixed << std::setw(4);
-			std::cout << (time2 * 20 * 1e-3) << " ms" << COLOR_END << std::endl;
+			std::cout << std::left << std::fixed;
+			std::cout << (time2 / 1000) << " ms" << COLOR_END << std::endl;
 		}
 		ss << num;
 		exit(1);
