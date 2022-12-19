@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   26.cpp                                             :+:      :+:    :+:   */
+/*   vec_example26.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:37:32 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/16 13:21:03 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:04:11 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ namespace	NS_TEST
 		vct_copy.push_back(42);
 		vct_copy.push_back(21);
 		ss << " " << vct.size();
+		ss << " " << vct.capacity();
 		ss << " " << vct_range.size();
 		ss << " " << vct_copy.size();
 		vct = vct_copy;
@@ -53,6 +54,7 @@ namespace	NS_TEST
 		for (; it != vct_copy.end(); ++it)
 			ss << " " << *it;
 		ss << " " << vct.size();
+		ss << " " << vct.capacity();
 		ss << " " << vct_range.size();
 		ss << " " << vct_copy.size();
 		_time = 0;
