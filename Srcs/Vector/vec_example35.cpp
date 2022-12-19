@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_example27.cpp                                  :+:      :+:    :+:   */
+/*   vec_example35.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 15:37:51 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/19 13:39:32 by vismaily         ###   ########.fr       */
+/*   Created: 2022/12/19 12:23:56 by vismaily          #+#    #+#             */
+/*   Updated: 2022/12/19 12:28:29 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Example 27 */
-/* Example tests insert(fill) */
+/* Example 35 */
+/* constructor(std iterators) */
 
 #include "test.hpp"
 
 namespace	NS_TEST
 {
-	const std::string	vec_example27(double &_time)
+	const std::string	vec_example35(double &_time)
 	{
 		std::ostringstream	ss;
 		clock_t				start;
 		clock_t				end;
-		NS::vector<int>		vct;
+		NS::vector<int>		_vector(3, 3);
 
-		vct.assign(1000, 1);
+		std::vector<int>	tmp(10000000, 4);
 
 		start = clock();
-		vct.insert(vct.end() - 50, 42000000, 2);
+		NS::vector<int>		tmp2(tmp.begin(), tmp.end());
 		end = clock();
 		_time = (double)(end - start);
 
-		ss << " " << (vct[2121]);
-		ss << " " << (vct.size());
-		ss << " " << (vct.capacity());
+		ss << " " << (tmp2.size());
+		ss << " " << (tmp2.capacity());
+
+		for (size_t i = 0; i < tmp.size(); ++i)
+			ss << " " << (tmp2[i]);
 
 		return (ss.str());
 	}
