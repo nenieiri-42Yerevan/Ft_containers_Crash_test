@@ -302,8 +302,8 @@ fi
 
 if ! test -z "$vector"; then
 	if ! test -e "$vector"; then
-		printf "${COLOR_RED_B}Error: Vector: file does not found: $vector.\n";
-		printf "       Correct path in config.sh and try again.\n"
+		printf "\n${COLOR_RED_B}Error: Vector: file does not found: $vector.\n";
+		printf "        Correct path in config.sh and try again.\n"
 		exit 1;
 	else
 		printf "\n${COLOR_GREEN_B}Vector: file found.";
@@ -312,8 +312,8 @@ fi
 
 if ! test -z "$stack"; then
 	if ! test -e "$stack"; then
-		printf "${COLOR_RED_B}Error: Stack: file does not found: $stack.\n";
-		printf "       Correct path in config.sh and try again.\n"
+		printf "\n${COLOR_RED_B}Error:  Stack: file does not found: $stack.\n";
+		printf "        Correct path in config.sh and try again.\n"
 		exit 1;
 	else
 		printf "\n${COLOR_GREEN_B}Stack:  file found.";
@@ -322,8 +322,8 @@ fi
 
 if ! test -z "$map"; then
 	if ! test -e "$map"; then
-		printf "${COLOR_RED_B}Error: Map: file does not found: $map.\n";
-		printf "       Correct path in config.sh and try again.\n"
+		printf "\n${COLOR_RED_B}Error:  Map: file does not found: $map.\n";
+		printf "        Correct path in config.sh and try again.\n"
 		exit 1;
 	else
 		printf "\n${COLOR_GREEN_B}Map:    file found.";

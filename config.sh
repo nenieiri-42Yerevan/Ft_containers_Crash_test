@@ -1,5 +1,8 @@
 #!/bin/bash
 
-vector='../42_Ft_containers/Containers/vector.hpp'
-stack='../42_Ft_containers/Containers/stack.hpp'
-map='../42_Ft_containers/Containers/map.hpp'
+# Comment with hash(#)symbol if you don't want to check one of this containers.
+# Write correct path to your containers
+
+vector='../vector.hpp'
+stack='../stack.hpp'
+map='../map.hpp'
