@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_example23.cpp                                  :+:      :+:    :+:   */
+/*   vec_example73.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 16:24:35 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/19 18:53:45 by vismaily         ###   ########.fr       */
+/*   Created: 2022/12/19 17:38:48 by vismaily          #+#    #+#             */
+/*   Updated: 2022/12/19 17:40:48 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Example 23 */
-/* assign overload */
+/* Example 73 */
+/* rev_ite_construct */
 
 #include "test.hpp"
 
 namespace	NS_TEST
 {
-	const std::string	map_example23(double &_time)
+	const std::string	vec_example73(double &_time)
 	{
 		std::ostringstream	ss;
-		clock_t				start;
-		clock_t				end;
-		NS::map<int, int>	mp;
-		NS::map<int, int>	mp2;
+		NS::vector<int>		vct;
 
-		for (int i = 0, j = 10; i < 200000; ++i, ++j)
-			mp.insert(NS::make_pair(i, j));
-		for (int i = 200000, j = 200010; i < 400000; ++i, ++j)
-			mp2.insert(NS::make_pair(i, j));
+		NS::vector<int>::iterator				it = vct.begin();
+		NS::vector<int>::const_iterator			cit = vct.begin();
+		NS::vector<int>::reverse_iterator		rit(it);
+		NS::vector<int>::const_reverse_iterator	crit(rit);
+		NS::vector<int>::const_reverse_iterator	crit_(it);
+		NS::vector<int>::const_reverse_iterator	crit_2(cit);
 
-		start = clock();
-		mp2 = mp;
-		end = clock();
-		_time = (double)(end - start);
-
-		ss << " " << mp2.size();
-
+		_time = 0;
 		return (ss.str());
 	}
 }
