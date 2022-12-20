@@ -18,10 +18,11 @@ If you haven't some class implementation yet, for example <b>map</b>, you need t
 ### Run
 
 ```shell
-./start.sh    # for all
-./start.sh -v # for vector
-./start.sh -s # for stack
-./start.sh -m # for map
+./start.sh       # for all
+./start.sh -v    # for vector
+./start.sh -s    # for stack
+./start.sh -m    # for map
+./start.sh -s -m # for stack and map, etc
 ```
 ___
 ### Additional information
