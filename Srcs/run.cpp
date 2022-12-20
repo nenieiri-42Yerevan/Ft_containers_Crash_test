@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 12:20:25 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/18 16:41:25 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/20 18:01:17 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,8 @@ void	run(int num, const std::string (*f1)(double &), const std::string (*f2)(dou
 		exit(1);
 	}
 	std::cout << COLOR_YELLOW_B << "TIME: " << std::flush;
-	if (((time2 / time1) <= 20) || time2 == 0 || time2 <= 0.000020)
+//	if (((time2 / time1) <= 20) || time2 == 0 || time2 <= 0.000020)
+	if (((time2 / time1) <= 20) || time2 == 0)
 		std::cout << COLOR_GREEN_B << "✅ OK" << COLOR_END;
 	else
 	{
