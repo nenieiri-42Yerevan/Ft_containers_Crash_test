@@ -2,13 +2,15 @@
 
 ## Description
 
-<span><b>ft_containers-Crash-test</b></span> is a complete test for Ft_containers project of 42 school and allowing you test your containers: <b>vector</b>, <b>stack</b>, <b>map</b> in <b>ft</b> namespace.</br>
-This test checks the majority of subject and checklist requires. Test doesn't check something you don't need to implement and was written by students.
+<span><b>42_Ft_containers-Crash-test</b></span> is a complete test for Ft_containers project of 42 school.<br>
+It is allowing you test your containers: <b>vector</b>, <b>stack</b>, <b>map</b> in <b>ft</b> namespace.<br>
+This test checks the majority of subject and checklist requires.<br>
+Test doesn't check something you don't need to implement and was written by students.
 
 ## Usage
 
-First of all You need to configure file ```config.sh``` and write correct paths of your classes.<br>
-If you haven't some class implementation yet, for example <b>Map</b>, you need to <b><i>comment</i></b> appropriate line in ```config.sh```:
+First of all you need to configure file ```config.sh``` and write correct paths of your classes.<br>
+If you haven't some class implementation yet, for example <b>map</b>, you need to <b><i>comment</i></b> appropriate line in ```config.sh```:
 ```c++
 # map='../map.hpp'
 ```
