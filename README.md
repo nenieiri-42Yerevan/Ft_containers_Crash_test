@@ -1,9 +1,10 @@
 # 42_Ft_containers_crash_test
 
+<span><b>42_Ft_containers-Crash-test</b></span> is a complete test for Ft_containers project of 42 school.
+
 ## Description
 
-<span><b>42_Ft_containers-Crash-test</b></span> is a complete test for Ft_containers project of 42 school.<br>
-It is allowing you test your containers: <b>vector</b>, <b>stack</b>, <b>map</b> in <b>ft</b> namespace.<br>
+<b>Crash test</b> is allowing you test your containers: <b>vector</b>, <b>stack</b>, <b>map</b> in <b>ft</b> namespace.<br>
 This test checks the majority of subject and checklist requires.<br>
 Test doesn't check something you don't need to implement and was written by students.
 
