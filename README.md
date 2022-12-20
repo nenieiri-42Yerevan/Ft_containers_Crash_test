@@ -4,10 +4,10 @@
 
 ## Usage
 
-First of all You need to configure file ```config.sh``` and write correct paths of your classes.
+First of all You need to configure file ```config.sh``` and write correct paths of your classes.<br>
 If you haven't some class implementation yet, for example <b>Map</b>, you need to <b><i>comment</i></b> appropriate line in ```config.sh```:
 ```c++
-// #map='../map.hpp'
+# map='../map.hpp'
 ```
 ### Run
 
