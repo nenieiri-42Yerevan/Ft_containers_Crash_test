@@ -1,6 +1,6 @@
 # 42_Ft_containers_crash_test
 
-<span><b>42_Ft_containers-Crash-test</b></span> is a complete test for Ft_containers project of 42 school.
+<span><b>42_Ft_containers-Crash-test</b></span> is a complete tester for Ft_containers project of 42 school.
 
 ## Description
 
