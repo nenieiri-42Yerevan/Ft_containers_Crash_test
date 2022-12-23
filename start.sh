@@ -233,7 +233,6 @@ MAP_FUNCTIONS=(
 				"map_example39"
 				"map_example40"
 				"map_example41"
-#				"map_example42"
 				"map_example43"
 				"map_example44"
 				"map_example45"
@@ -243,7 +242,6 @@ MAP_FUNCTIONS=(
 				"map_example49"
 				"map_example50"
 				"map_example51"
-#				"map_example52"
 				"map_example53"
 			  );
 

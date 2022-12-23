@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:31:40 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/16 13:31:05 by tumolabs         ###   ########.fr       */
+/*   Updated: 2022/12/23 18:33:28 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ namespace	NS_TEST
 		{
 			A.at('t');
 		}
-		catch (const std::exception &e)
+		catch (const std::out_of_range &e)
 		{
-			ss << " " << e.what();
+			ss << " " << 1;
 		}
 		_time = 0;
 		return (ss.str());
