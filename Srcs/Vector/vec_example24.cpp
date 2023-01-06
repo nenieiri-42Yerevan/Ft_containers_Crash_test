@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   24.cpp                                             :+:      :+:    :+:   */
+/*   vec_example24.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:36:47 by vismaily          #+#    #+#             */
-/*   Updated: 2022/12/16 13:20:02 by tumolabs         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:56:57 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 
 #include "test.hpp"
 
+static std::ostringstream sss;
+
 namespace	NS_TEST
 {
 	struct	A
 	{
 		A* operator &() const
 		{
-			std::cout << "error ";
+			sss << " error";
 			return (0);
 		}
 	};
@@ -37,6 +39,7 @@ namespace	NS_TEST
 		ss << " " << vec.capacity();
 		ss << " " << vec.size();
 		_time = 0;
+		ss << sss.str();
 		return (ss.str());
 	}
 }
