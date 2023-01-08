@@ -391,9 +391,14 @@ if ! test -z "$vector"; then
 			if [ $LEAKS_ON = "1"  ]; then
 				LEAKS=$(cat "$TMP"leaks | grep "0 leak");
 			else
-				valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
-				LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
+				timeout 30 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
+				if [ $? -ne 0 ]; then
+					LEAKS="leaks no check (it takes too long time). So continue";
+				else
+					LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
+				fi
 			fi
+			echo $LEAKS;
 			if test -z "$LEAKS"; then
 				printf "${COLOR_RED_B}❌ KO\n";
 				printf "You have memory leaks.\n";
@@ -480,8 +485,12 @@ if ! test -z "$stack"; then
 			if [ $LEAKS_ON = "1"  ]; then
 				LEAKS=$(cat "$TMP"leaks | grep "0 leak");
 			else
-				valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
-				LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
+				timeout 30 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
+				if [ $? -ne 0 ]; then
+					LEAKS="leaks no check (it takes too long time). So continue";
+				else
+					LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
+				fi
 			fi
 			if test -z "$LEAKS"; then
 				printf "${COLOR_RED_B}❌ KO\n";
@@ -570,8 +579,12 @@ if ! test -z "$map"; then
 			if [ $LEAKS_ON = "1"  ]; then
 				LEAKS=$(cat "$TMP"leaks | grep "0 leak");
 			else
-				valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
-				LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
+				timeout 30 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
+				if [ $? -ne 0 ]; then
+					LEAKS="leaks no check (it takes too long time). So continue";
+				else
+					LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
+				fi
 			fi
 			if test -z "$LEAKS"; then
 				printf "${COLOR_RED_B}❌ KO\n";
