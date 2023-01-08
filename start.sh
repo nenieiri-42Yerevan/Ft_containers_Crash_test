@@ -17,7 +17,12 @@ COLOR_CYAN='\033[0;36m':
 COLOR_END='\033[0m';
 
 CPP='c++';
-CPP_FLAGS='-Wall -Wextra -Werror -Wno-deprecated -I./Srcs -I./';
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+	CPP_FLAGS='-Wall -Wextra -Werror -Wno-deprecated-copy -I./Srcs -I./';
+else
+	CPP_FLAGS='-Wall -Wextra -Werror -Wno-deprecated -I./Srcs -I./';
+fi
 
 VECTOR_ON=0;
 STACK_ON=0;
