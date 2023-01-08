@@ -134,7 +134,7 @@ VECTOR_FUNCTIONS=(
 					"vec_example50"
 					"vec_example51"
 					"vec_example52"
-					"vec_example53"
+#					"vec_example53"
 					"vec_example54"
 					"vec_example55"
 					"vec_example56"
