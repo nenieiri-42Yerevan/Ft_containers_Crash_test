@@ -17,7 +17,7 @@ COLOR_CYAN='\033[0;36m':
 COLOR_END='\033[0m';
 
 CPP='c++';
-CPP_FLAGS='-Wall -Wextra -Werror -I./Srcs -I./';
+CPP_FLAGS='-Wall -Wextra -Werror -Wno-deprecated-copy -I./Srcs -I./';
 
 VECTOR_ON=0;
 STACK_ON=0;
