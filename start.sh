@@ -391,7 +391,7 @@ if ! test -z "$vector"; then
 			if [ $LEAKS_ON = "1"  ]; then
 				LEAKS=$(cat "$TMP"leaks | grep "0 leak");
 			else
-				timeout 30 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
+				timeout 10 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
 				if [ $? -ne 0 ]; then
 					LEAKS="leaks no check (it takes too long time). So continue";
 				else
@@ -484,7 +484,7 @@ if ! test -z "$stack"; then
 			if [ $LEAKS_ON = "1"  ]; then
 				LEAKS=$(cat "$TMP"leaks | grep "0 leak");
 			else
-				timeout 30 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
+				timeout 10 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
 				if [ $? -ne 0 ]; then
 					LEAKS="leaks no check (it takes too long time). So continue";
 				else
@@ -578,7 +578,7 @@ if ! test -z "$map"; then
 			if [ $LEAKS_ON = "1"  ]; then
 				LEAKS=$(cat "$TMP"leaks | grep "0 leak");
 			else
-				timeout 30 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
+				timeout 10 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
 				if [ $? -ne 0 ]; then
 					LEAKS="leaks no check (it takes too long time). So continue";
 				else
