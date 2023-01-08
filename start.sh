@@ -398,7 +398,6 @@ if ! test -z "$vector"; then
 					LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
 				fi
 			fi
-			echo $LEAKS;
 			if test -z "$LEAKS"; then
 				printf "${COLOR_RED_B}❌ KO\n";
 				printf "You have memory leaks.\n";
