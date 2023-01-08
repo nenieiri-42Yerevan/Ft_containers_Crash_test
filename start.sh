@@ -17,7 +17,7 @@ COLOR_CYAN='\033[0;36m':
 COLOR_END='\033[0m';
 
 CPP='c++';
-CPP_FLAGS='-Wall -Wextra -Werror -Wno-deprecated-copy -I./Srcs -I./';
+CPP_FLAGS='-Wall -Wextra -Werror -Wno-deprecated -I./Srcs -I./';
 
 VECTOR_ON=0;
 STACK_ON=0;
@@ -88,11 +88,11 @@ VECTOR_FUNCTIONS=(
 					"vec_example9"
 					"vec_example10"
 					"vec_example11"
-					"vec_example12"
+#					"vec_example12"
 					"vec_example13"
-					"vec_example14"
+#					"vec_example14"
 					"vec_example15"
-					"vec_example16"
+#					"vec_example16"
 					"vec_example17"
 					"vec_example18"
 					"vec_example19"
@@ -104,19 +104,19 @@ VECTOR_FUNCTIONS=(
 					"vec_example25"
 					"vec_example26"
 					"vec_example27"
-					"vec_example28"
-					"vec_example29"
+#					"vec_example28"
+#					"vec_example29"
 					"vec_example30"
 					"vec_example31"
 					"vec_example32"
 					"vec_example33"
-					"vec_example34"
-					"vec_example35"
-					"vec_example36"
+#					"vec_example34"
+#					"vec_example35"
+#					"vec_example36"
 					"vec_example37"
 					"vec_example38"
 					"vec_example39"
-					"vec_example40"
+#					"vec_example40"
 					"vec_example41"
 					"vec_example42"
 					"vec_example43"
@@ -135,7 +135,7 @@ VECTOR_FUNCTIONS=(
 					"vec_example56"
 					"vec_example57"
 					"vec_example58"
-					"vec_example59"
+#					"vec_example59"
 					"vec_example60"
 					"vec_example61"
 					"vec_example62"
@@ -144,7 +144,7 @@ VECTOR_FUNCTIONS=(
 					"vec_example65"
 					"vec_example66"
 					"vec_example67"
-					"vec_example68"
+#					"vec_example68"
 					"vec_example69"
 					"vec_example70"
 					"vec_example71"
@@ -152,7 +152,7 @@ VECTOR_FUNCTIONS=(
 					"vec_example73"
 					"vec_example74"
 					"vec_example75"
-					"vec_example76"
+#					"vec_example76"
 					"vec_example77"
 				 );
 
@@ -329,50 +329,77 @@ if ! test -z "$map"; then
 fi
 
 ################################################################################
-################################### VECTOR #####################################
+#################################### CORE ######################################
 
-if ! test -z "$vector"; then
-	printf "\n\n${COLOR_BLUE_B}"
-	printf "\b####################################################################################\n";
-	printf "#                                      VECTOR                                      #\n";
-	printf "####################################################################################\n";
-	for FUNC in "${VECTOR_FUNCTIONS[@]}"
-	do
-		F1_SRC=$VECTOR"$FUNC".cpp;
-		F1_OBJ_STD=$TMP"$FUNC"_std.o;
-		F1_OBJ_FT=$TMP"$FUNC"_ft.o;
+function core() {
+	F1_SRC=$2"$1".cpp;
+	F1_OBJ_STD=$TMP"$1"_std.o;
+	F1_OBJ_FT=$TMP"$1"_ft.o;
 
-		N=${FUNC:11}
-		printf "\n${COLOR_PURPLE_B}Case ";
-		if (($N < 10)); then
-			echo -n " ";
+	if [ $3 = "stack" ]; then
+		N=${1:13}
+	else
+		N=${1:11}
+	fi
+	printf "\n${COLOR_PURPLE_B}Case ";
+	if (($N < 10)); then
+		echo -n " ";
+	fi
+	printf "$N:${COLOR_YELLOW_B} COMPILATION: ${COLOR_END}"
+	if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
+		printf "${COLOR_RED_B}❌ KO\n";
+		printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
+		printf "${COLOR_YELLOW_B}Do you want to see compile error output? [y] or [n]: ";
+		printf "${COLOR_PURPLE_B}";
+		read -n1 ANSWER;
+		printf "${COLOR_END}\n";
+		if [ $ANSWER = "y" ]; then
+			echo ;
+			printf "${COLOR_CYAN_B}\b####################################################################################\n"
+			printf "${COLOR_CYAN}";
+			cat $TMP"err";
+			printf "${COLOR_CYAN_B}\b####################################################################################\n"
 		fi
-		printf "$N:${COLOR_YELLOW_B} COMPILATION: ${COLOR_END}"
-		if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
-			printf "${COLOR_RED_B}❌ KO\n";
-			printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
-			printf "${COLOR_YELLOW_B}Do you want to see compile error output? [y] or [n]: ";
-			printf "${COLOR_PURPLE_B}";
-			read -n1 ANSWER;
-			printf "${COLOR_END}\n";
-			if [ $ANSWER = "y" ]; then
-				echo ;
-				printf "${COLOR_CYAN_B}\b####################################################################################\n"
-				printf "${COLOR_CYAN}";
-				cat $TMP"err";
-				printf "${COLOR_CYAN_B}\b####################################################################################\n"
-			fi
-			rm -rf $TMP $NAME;
-			exit 1;
+		rm -rf $TMP $NAME;
+		exit 1;
+	else
+		$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
+		printf "${COLOR_GREEN_B}✅ OK ";
+	fi
+	$CPP $CPP_FLAGS $PROTOTYPES -D LEAKS=$LEAKS_ON -D NUM=$N -D F1='std_test::'$1 -D F2='ft_test::'$1 -c $MAIN_SRC -o $MAIN_OBJ;
+
+	$CPP -o $NAME $F1_OBJ_STD $F1_OBJ_FT $RUN_OBJ $MAIN_OBJ;
+
+	if ! ./$NAME; then
+		printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
+		printf "${COLOR_PURPLE_B}";
+		read -n1 ANSWER;
+		printf "${COLOR_END}\n";
+		if [ $ANSWER = "y" ]; then
+			echo ;
+			printf "${COLOR_CYAN}\b";
+			cat $F1_SRC;
+			echo ;
+		fi
+		rm -rf $TMP $NAME;
+		exit 1;
+	fi
+	if [ $LEAKS_ON = "1" ] || [ $LEAKS_ON = "2" ]; then
+		printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
+		if [ $LEAKS_ON = "1"  ]; then
+			LEAKS=$(cat "$TMP"leaks | grep "0 leak");
 		else
-			$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
-			printf "${COLOR_GREEN_B}✅ OK ";
+			timeout 10 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
+			if [ $? -ne 0 ]; then
+				LEAKS="leaks no check (it takes too long time). So continue";
+			else
+				LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
+			fi
 		fi
-		$CPP $CPP_FLAGS $PROTOTYPES -D LEAKS=$LEAKS_ON -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
-
-		$CPP -o $NAME $F1_OBJ_STD $F1_OBJ_FT $RUN_OBJ $MAIN_OBJ;
-
-		if ! ./$NAME; then
+		if test -z "$LEAKS"; then
+			printf "${COLOR_RED_B}❌ KO\n";
+			printf "You have memory leaks.\n";
+			printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
 			printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
 			printf "${COLOR_PURPLE_B}";
 			read -n1 ANSWER;
@@ -385,39 +412,23 @@ if ! test -z "$vector"; then
 			fi
 			rm -rf $TMP $NAME;
 			exit 1;
+		else
+			printf "${COLOR_GREEN_B}✅ OK${COLOR_END}";
 		fi
-		if [ $LEAKS_ON = "1" ] || [ $LEAKS_ON = "2" ]; then
-			printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
-			if [ $LEAKS_ON = "1"  ]; then
-				LEAKS=$(cat "$TMP"leaks | grep "0 leak");
-			else
-				timeout 10 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
-				if [ $? -ne 0 ]; then
-					LEAKS="leaks no check (it takes too long time). So continue";
-				else
-					LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
-				fi
-			fi
-			if test -z "$LEAKS"; then
-				printf "${COLOR_RED_B}❌ KO\n";
-				printf "You have memory leaks.\n";
-				printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
-				printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
-				printf "${COLOR_PURPLE_B}";
-				read -n1 ANSWER;
-				printf "${COLOR_END}\n";
-				if [ $ANSWER = "y" ]; then
-					echo ;
-					printf "${COLOR_CYAN}\b";
-					cat $F1_SRC;
-					echo ;
-				fi
-				rm -rf $TMP $NAME;
-				exit 1;
-			else
-				printf "${COLOR_GREEN_B}✅ OK${COLOR_END}";
-			fi
-		fi
+	fi
+}
+
+################################################################################
+################################### VECTOR #####################################
+
+if ! test -z "$vector"; then
+	printf "\n\n${COLOR_BLUE_B}"
+	printf "\b####################################################################################\n";
+	printf "#                                      VECTOR                                      #\n";
+	printf "####################################################################################\n";
+	for FUNC in "${VECTOR_FUNCTIONS[@]}"
+	do
+		core $FUNC $VECTOR vector
 	done
 fi
 
@@ -431,86 +442,7 @@ if ! test -z "$stack"; then
 	printf "####################################################################################\n";
 	for FUNC in "${STACK_FUNCTIONS[@]}"
 	do
-		F1_SRC=$STACK"$FUNC".cpp;
-		F1_OBJ_STD=$TMP"$FUNC"_std.o;
-		F1_OBJ_FT=$TMP"$FUNC"_ft.o;
-
-		N=${FUNC:13}
-		printf "\n${COLOR_PURPLE_B}Case ";
-		if (($N < 10)); then
-			echo -n " ";
-		fi
-		printf "$N:${COLOR_YELLOW_B} COMPILATION: ${COLOR_END}"
-		if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
-			printf "${COLOR_RED_B}❌ KO\n";
-			printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
-			printf "${COLOR_YELLOW_B}Do you want to see compile error output? [y] or [n]: ";
-			printf "${COLOR_PURPLE_B}";
-			read -n1 ANSWER;
-			printf "${COLOR_END}\n";
-			if [ $ANSWER = "y" ]; then
-				echo ;
-				printf "${COLOR_CYAN_B}\b####################################################################################\n"
-				printf "${COLOR_CYAN}";
-				cat $TMP"err";
-				printf "${COLOR_CYAN_B}\b####################################################################################\n"
-			fi
-			rm -rf $TMP $NAME;
-			exit 1;
-		else
-			$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
-			printf "${COLOR_GREEN_B}✅ OK ";
-		fi
-		$CPP $CPP_FLAGS $PROTOTYPES -D LEAKS=$LEAKS_ON -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
-
-		$CPP -o $NAME $F1_OBJ_STD $F1_OBJ_FT $RUN_OBJ $MAIN_OBJ;
-
-		if ! ./$NAME; then
-			printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
-			printf "${COLOR_PURPLE_B}";
-			read -n1 ANSWER;
-			printf "${COLOR_END}\n";
-			if [ $ANSWER = "y" ]; then
-				echo ;
-				printf "${COLOR_CYAN}\b";
-				cat $F1_SRC;
-				echo ;
-			fi
-			rm -rf $TMP $NAME;
-			exit 1;
-		fi
-		if [ $LEAKS_ON = "1" ] || [ $LEAKS_ON = "2" ]; then
-			printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
-			if [ $LEAKS_ON = "1"  ]; then
-				LEAKS=$(cat "$TMP"leaks | grep "0 leak");
-			else
-				timeout 10 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
-				if [ $? -ne 0 ]; then
-					LEAKS="leaks no check (it takes too long time). So continue";
-				else
-					LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
-				fi
-			fi
-			if test -z "$LEAKS"; then
-				printf "${COLOR_RED_B}❌ KO\n";
-				printf "You have memory leaks.\n";
-				printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
-				printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
-				printf "${COLOR_PURPLE_B}";
-				read -n1 ANSWER;
-				printf "${COLOR_END}\n";
-				if [ $ANSWER = "y" ]; then
-					echo ;
-					printf "${COLOR_CYAN}\b";
-					cat $F1_SRC;
-					echo ;
-				fi
-				rm -rf $TMP $NAME;
-				exit 1;
-			else
-				printf "${COLOR_GREEN_B}✅ OK${COLOR_END}";
-			fi
-		fi
+		core $FUNC $STACK stack
 	done
 fi
 
@@ -524,87 +456,7 @@ if ! test -z "$map"; then
 	printf "####################################################################################\n";
 	for FUNC in "${MAP_FUNCTIONS[@]}"
 	do
-		F1_SRC=$MAP"$FUNC".cpp;
-		F1_OBJ_STD=$TMP"$FUNC"_std.o;
-		F1_OBJ_FT=$TMP"$FUNC"_ft.o;
-
-		N=${FUNC:11}
-		printf "\n${COLOR_PURPLE_B}Case ";
-		if (($N < 10)); then
-			echo -n " ";
-		fi
-		printf "$N:${COLOR_YELLOW_B} COMPILATION: ${COLOR_END}"
-		if ! $CPP $CPP_FLAGS $PROTOTYPES $defines_ft -c $F1_SRC -o $F1_OBJ_FT 2> $TMP"err"; then
-			printf "${COLOR_RED_B}❌ KO\n";
-			printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
-			printf "${COLOR_YELLOW_B}Do you want to see compile error output? [y] or [n]: ";
-			printf "${COLOR_PURPLE_B}";
-			read -n1 ANSWER;
-			printf "${COLOR_END}";
-			echo ;
-			if [ $ANSWER = "y" ]; then
-				echo ;
-				printf "${COLOR_CYAN_B}\b####################################################################################\n"
-				printf "${COLOR_CYAN}";
-				cat $TMP"err";
-				printf "${COLOR_CYAN_B}\b####################################################################################\n"
-			fi
-			rm -rf $TMP $NAME;
-			exit 1;
-		else
-			$CPP $CPP_FLAGS $PROTOTYPES $defines_std -c $F1_SRC -o $F1_OBJ_STD;
-			printf "${COLOR_GREEN_B}✅ OK ";
-		fi
-		$CPP $CPP_FLAGS $PROTOTYPES -D LEAKS=$LEAKS_ON -D NUM=$N -D F1='std_test::'$FUNC -D F2='ft_test::'$FUNC -c $MAIN_SRC -o $MAIN_OBJ;
-
-		$CPP -o $NAME $F1_OBJ_STD $F1_OBJ_FT $RUN_OBJ $MAIN_OBJ;
-
-		if ! ./$NAME; then
-			printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
-			printf "${COLOR_PURPLE_B}";
-			read -n1 ANSWER;
-			printf "${COLOR_END}\n";
-			if [ $ANSWER = "y" ]; then
-				echo ;
-				printf "${COLOR_CYAN}\b";
-				cat $F1_SRC;
-				echo ;
-			fi
-			rm -rf $TMP $NAME;
-			exit 1;
-		fi
-		if [ $LEAKS_ON = "1" ] || [ $LEAKS_ON = "2" ]; then
-			printf "${COLOR_PURPLE_B} |${COLOR_YELLOW_B} LEAKS: ${COLOR_END}"
-			if [ $LEAKS_ON = "1"  ]; then
-				LEAKS=$(cat "$TMP"leaks | grep "0 leak");
-			else
-				timeout 10 valgrind --leak-check=full ./$NAME &> "$TMP"leaks;
-				if [ $? -ne 0 ]; then
-					LEAKS="leaks no check (it takes too long time). So continue";
-				else
-					LEAKS=$(cat "$TMP"leaks | grep "no leaks are possible");
-				fi
-			fi
-			if test -z "$LEAKS"; then
-				printf "${COLOR_RED_B}❌ KO\n";
-				printf "You have memory leaks.\n";
-				printf "Your grade is 0/100. Fix mistake and try again!!!${COLOR_END}\n";
-				printf "${COLOR_YELLOW_B}Do you want to see error case? [y] or [n]: ";
-				printf "${COLOR_PURPLE_B}";
-				read -n1 ANSWER;
-				printf "${COLOR_END}\n";
-				if [ $ANSWER = "y" ]; then
-					echo ;
-					printf "${COLOR_CYAN}\b";
-					cat $F1_SRC;
-					echo ;
-				fi
-				rm -rf $TMP $NAME;
-				exit 1;
-			else
-				printf "${COLOR_GREEN_B}✅ OK${COLOR_END}";
-			fi
-		fi
+		core $FUNC $MAP map
 	done
 fi
 
