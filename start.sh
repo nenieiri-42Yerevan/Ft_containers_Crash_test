@@ -71,7 +71,7 @@ if $(test -z "$vector") && $(test -z "$stack") && $(test -z "$map"); then
 fi
 
 defines_ft="-D NS=ft -D NS_TEST=ft_test $V_DEF $S_DEF $M_DEF";
-defines_std="-D NS=std -D NS_TEST=std_test $V_DEF $S_DEF $M_DEF";
+defines_std="-D NS=std -D NS_TEST=std_test";
 
 NAME="crash_test";
 
