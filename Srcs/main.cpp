@@ -12,7 +12,6 @@
 
 #include "test.hpp"
 
-
 int	main()
 {
 	pid_t	fork_pid;
